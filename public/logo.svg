@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" fill="none">
+  <defs>
+    <linearGradient id="logoBGrad" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#bef264" />
+      <stop offset="50%" stop-color="#a3e635" />
+      <stop offset="100%" stop-color="#65a30d" />
+    </linearGradient>
+  </defs>
+  <!-- Icon squircle -->
+  <rect x="2" y="2" width="44" height="44" rx="13" fill="#0f172a" stroke="#334155" stroke-width="1.5" />
+  <path
+    d="M15 12C15 10.8954 15.8954 10 17 10H27C30.866 10 34 13.134 34 17C34 19.508 32.6784 21.7061 30.6913 22.9254C33.1969 24.1165 35 26.6508 35 29.6C35 34.2392 31.2392 38 26.6 38H17C15.8954 38 15 37.1046 15 36V12Z"
+    stroke="url(#logoBGrad)"
+    stroke-width="3"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path d="M15 18H31" stroke="url(#logoBGrad)" stroke-width="2.5" stroke-linecap="round" />
+  <path d="M15 25.5H27" stroke="url(#logoBGrad)" stroke-width="2.5" stroke-linecap="round" />
+  <path d="M21 32L24.5 35L29.5 28.5" stroke="#bef264" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Typography: Bookly -->
+  <text x="56" y="27" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="22" font-weight="800" fill="#ffffff" letter-spacing="-0.5">Bookly</text>
+  <text x="56" y="40" font-family="'Inter', system-ui, sans-serif" font-size="11" font-weight="500" fill="#94a3b8">Built by <tspan fill="#a3e635" font-weight="700">Dawnexus</tspan></text>
+</svg>
+

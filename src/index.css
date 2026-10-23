@@ -1,0 +1,240 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  body.dark {
+    background-color: #0b0f17;
+    color: #f1f5f9;
+  }
+
+  body.light {
+    background-color: #edf2f7;
+    color: #0f172a;
+  }
+}
+
+/* --- Tactile Neumorphism Tokens --- */
+
+/* Dark Mode Neumorphism */
+.dark .neu-raised {
+  background: #141b27;
+  box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.45), -4px -4px 12px rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dark .neu-raised-sm {
+  background: #151d2c;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.35), -2px -2px 6px rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dark .neu-recessed {
+  background: #0b1019;
+  box-shadow: inset 3px 3px 7px rgba(0, 0, 0, 0.6), inset -2px -2px 5px rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.dark .neu-card {
+  background: #121824;
+  border: 1px solid #1f293d;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 4px 12px -2px rgba(0, 0, 0, 0.4);
+}
+
+/* Light Mode Neumorphism */
+.light .neu-raised {
+  background: #ffffff;
+  box-shadow: 7px 7px 18px #d0d7e2, -7px -7px 18px #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.light .neu-raised-sm {
+  background: #f8fafc;
+  box-shadow: 4px 4px 10px #d4dbe5, -4px -4px 10px #ffffff;
+  border: 1px solid #e2e8f0;
+}
+
+.light .neu-recessed {
+  background: #e7ecf3;
+  box-shadow: inset 3px 3px 6px #cdd4df, inset -3px -3px 6px #ffffff;
+  border: 1px solid #dbe2ec;
+}
+
+.light .neu-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 25px -4px rgba(15, 23, 42, 0.06), 0 4px 10px -2px rgba(15, 23, 42, 0.03);
+}
+
+/* Active & Glow Highlights */
+.neu-lime-active {
+  background: #a3e635 !important;
+  color: #0f172a !important;
+  box-shadow: 0 0 20px rgba(163, 230, 53, 0.45), 0 4px 12px rgba(163, 230, 53, 0.3) !important;
+  border-color: #bef264 !important;
+}
+
+.neu-lime-btn {
+  background: #a3e635;
+  color: #0b121f;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(163, 230, 53, 0.35);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.neu-lime-btn:hover {
+  background: #bef264;
+  box-shadow: 0 6px 24px rgba(163, 230, 53, 0.5);
+  transform: translateY(-1.5px);
+}
+
+.neu-lime-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 8px rgba(163, 230, 53, 0.25);
+}
+
+/* Violet & Indigo Neon Highlights */
+.neu-indigo-glow {
+  box-shadow: 0 0 25px rgba(99, 102, 241, 0.35);
+}
+
+/* 3D Perspective Canvas & Float Utilities */
+.perspective-1000 {
+  perspective: 1200px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(8px) rotate(-1.5deg);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.6;
+  }
+}
+
+.animate-float-slow {
+  animation: float-gentle 5s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 6s ease-in-out infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 3s ease-in-out infinite;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
+}
+
+/* Tactile Microinteractions & Skeletons */
+.interactive-scale {
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s ease;
+}
+.interactive-scale:hover {
+  transform: scale(1.02);
+}
+.interactive-scale:active {
+  transform: scale(0.98);
+}
+
+.interactive-lift {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
+.interactive-lift:hover {
+  transform: translateY(-2px);
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 25%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.03) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.6s ease-in-out infinite;
+}
+
+.light .skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.04) 25%,
+    rgba(0, 0, 0, 0.08) 50%,
+    rgba(0, 0, 0, 0.04) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-shimmer {
+    animation: none !important;
+  }
+  .interactive-scale:hover,
+  .interactive-scale:active,
+  .interactive-lift:hover {
+    transform: none !important;
+  }
+}
+
