@@ -129,8 +129,10 @@ export const Navbar: React.FC = () => {
             <ThemeToggle />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`p-2 rounded-xl border ${
-                isDark ? 'bg-slate-800 text-slate-200 border-slate-700' : 'bg-slate-100 text-slate-800 border-slate-300'
+              className={`p-2 rounded-full border transition-all active:scale-95 ${
+                isDark
+                  ? 'bg-[#181411] text-[#dfc299] border-[#c5a880]/35'
+                  : 'bg-[#f5efe6] text-stone-800 border-[#c5a880]/40 shadow-sm'
               }`}
               aria-label="Toggle navigation menu"
             >
@@ -142,7 +144,7 @@ export const Navbar: React.FC = () => {
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
           <div
-            className={`sm:hidden border-b px-6 py-6 space-y-4 shadow-2xl ${
+            className={`sm:hidden border-b px-6 py-6 space-y-4 shadow-2xl animate-fade-in ${
               isDark ? 'bg-[#14110f] border-[#c5a880]/20 text-[#faf7f2]' : 'bg-[#fbf9f5] border-[#c5a880]/30 text-[#1a1614]'
             }`}
           >
@@ -179,7 +181,7 @@ export const Navbar: React.FC = () => {
               </button>
             </div>
 
-            <div className="pt-4 border-t border-[#c5a880]/20 flex flex-col gap-3">
+            <div className="pt-4 border-t border-[#c5a880]/20 flex flex-col gap-2.5">
               <Link
                 to="/appointment-automation/demo"
                 onClick={() => setMobileMenuOpen(false)}
@@ -198,6 +200,18 @@ export const Navbar: React.FC = () => {
                 <LayoutDashboard className="w-4 h-4 text-[#dfc299]" />
                 <span>Explore Dashboard</span>
               </Link>
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false)
+                  setResetConfirmOpen(true)
+                }}
+                className={`w-full py-2.5 rounded-full text-xs font-semibold border flex items-center justify-center gap-2 ${
+                  isDark ? 'bg-[#181411] text-stone-400 border-[#c5a880]/20' : 'bg-stone-100 text-stone-600 border-[#c5a880]/30'
+                }`}
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span>Reset Demo Baseline</span>
+              </button>
             </div>
           </div>
         )}

@@ -149,11 +149,11 @@ export const HeroSection: React.FC = () => {
           </div>
 
           {/* Dual Arched Frames Side by Side (Exact Match to Reference Image) */}
-          <div className="grid md:grid-cols-2 gap-8 sm:gap-12 mt-12 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-12 mt-10 sm:mt-12 max-w-4xl mx-auto">
             {/* Left Roman Arch Frame: Grand Lobby & Salon */}
             <div className="group relative">
               <div
-                className={`luxury-arch overflow-hidden border border-[#c5a880]/35 shadow-2xl relative h-[360px] sm:h-[440px] transition-transform duration-500 group-hover:scale-[1.01] ${
+                className={`luxury-arch overflow-hidden border border-[#c5a880]/35 shadow-2xl relative h-[320px] sm:h-[440px] transition-transform duration-500 group-hover:scale-[1.01] ${
                   isDark ? 'bg-[#181411]' : 'bg-[#f5efe6]'
                 }`}
               >
@@ -166,11 +166,11 @@ export const HeroSection: React.FC = () => {
                 <div className="absolute inset-0 luxury-arch border border-[#c5a880]/30 pointer-events-none" />
 
                 {/* Bottom Label */}
-                <div className="absolute bottom-6 inset-x-6 text-center text-white">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#dfc299] block mb-1">
+                <div className="absolute bottom-5 sm:bottom-6 inset-x-4 sm:inset-x-6 text-center text-white">
+                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-[#dfc299] block mb-1">
                     Private Chambers
                   </span>
-                  <h4 className="font-classic-serif text-2xl font-normal">
+                  <h4 className="font-classic-serif text-xl sm:text-2xl font-normal">
                     Grand Suites & Consultations
                   </h4>
                 </div>
@@ -180,7 +180,7 @@ export const HeroSection: React.FC = () => {
             {/* Right Roman Arch Frame: Fine Dining & VIP Table */}
             <div className="group relative">
               <div
-                className={`luxury-arch overflow-hidden border border-[#c5a880]/35 shadow-2xl relative h-[360px] sm:h-[440px] transition-transform duration-500 group-hover:scale-[1.01] ${
+                className={`luxury-arch overflow-hidden border border-[#c5a880]/35 shadow-2xl relative h-[320px] sm:h-[440px] transition-transform duration-500 group-hover:scale-[1.01] ${
                   isDark ? 'bg-[#181411]' : 'bg-[#f5efe6]'
                 }`}
               >
@@ -193,11 +193,11 @@ export const HeroSection: React.FC = () => {
                 <div className="absolute inset-0 luxury-arch border border-[#c5a880]/30 pointer-events-none" />
 
                 {/* Bottom Label */}
-                <div className="absolute bottom-6 inset-x-6 text-center text-white">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#dfc299] block mb-1">
+                <div className="absolute bottom-5 sm:bottom-6 inset-x-4 sm:inset-x-6 text-center text-white">
+                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-[#dfc299] block mb-1">
                     Exclusive Hospitality
                   </span>
-                  <h4 className="font-classic-serif text-2xl font-normal">
+                  <h4 className="font-classic-serif text-xl sm:text-2xl font-normal">
                     Dine, Relax & Rejuvenate
                   </h4>
                 </div>
@@ -209,9 +209,9 @@ export const HeroSection: React.FC = () => {
         {/* ==================================================================== */}
         {/* SECTION 3: 3 BENEFIT PILLARS                                         */}
         {/* ==================================================================== */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mt-16 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 mt-12 sm:mt-16 max-w-4xl mx-auto">
           <div
-            className={`flex items-center gap-4 p-5 rounded-3xl transition-all ${
+            className={`flex items-center gap-4 p-4 sm:p-5 rounded-3xl transition-all ${
               isDark
                 ? 'neu-raised border border-[#c5a880]/20'
                 : 'bg-white border border-[#c5a880]/30 shadow-sm'
@@ -229,7 +229,7 @@ export const HeroSection: React.FC = () => {
           </div>
 
           <div
-            className={`flex items-center gap-4 p-5 rounded-3xl transition-all ${
+            className={`flex items-center gap-4 p-4 sm:p-5 rounded-3xl transition-all ${
               isDark
                 ? 'neu-raised border border-[#c5a880]/20'
                 : 'bg-white border border-[#c5a880]/30 shadow-sm'
@@ -247,7 +247,7 @@ export const HeroSection: React.FC = () => {
           </div>
 
           <div
-            className={`flex items-center gap-4 p-5 rounded-3xl transition-all ${
+            className={`flex items-center gap-4 p-4 sm:p-5 rounded-3xl transition-all ${
               isDark
                 ? 'neu-raised border border-[#c5a880]/20'
                 : 'bg-white border border-[#c5a880]/30 shadow-sm'
@@ -268,13 +268,13 @@ export const HeroSection: React.FC = () => {
         {/* ==================================================================== */}
         {/* SECTION 4: INDUSTRY PRESET SELECTOR (FOR PRESTIGIOUS ENTERPRISES)   */}
         {/* ==================================================================== */}
-        <div id="industries" className="mt-24 pt-12 border-t border-[#c5a880]/20">
-          <div className="text-center mb-10">
+        <div id="industries" className="mt-16 sm:mt-24 pt-10 sm:pt-12 border-t border-[#c5a880]/20">
+          <div className="text-center mb-8 sm:mb-10">
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#c5a880] block mb-2">
               SECTOR SHOWCASE
             </span>
             <h3
-              className={`text-3xl sm:text-4xl font-classic-serif font-normal ${
+              className={`text-2xl sm:text-4xl font-classic-serif font-normal ${
                 isDark ? 'text-white' : 'text-stone-900'
               }`}
             >
@@ -285,7 +285,7 @@ export const HeroSection: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5 sm:gap-3">
             {industries.map((ind) => {
               const Icon = ind.icon
               const isActive = currentIndustryId === ind.id
@@ -293,7 +293,7 @@ export const HeroSection: React.FC = () => {
                 <button
                   key={ind.id}
                   onClick={() => setIndustry(ind.id)}
-                  className={`p-4 rounded-3xl transition-all text-center flex flex-col items-center justify-center gap-2 group cursor-pointer ${
+                  className={`p-3.5 sm:p-4 rounded-3xl transition-all text-center flex flex-col items-center justify-center gap-2 group cursor-pointer last:col-span-2 sm:last:col-span-1 active:scale-95 ${
                     isActive
                       ? isDark
                         ? 'bg-[#1e1915] border-2 border-[#c5a880] shadow-xl shadow-[#c5a880]/15 text-white'

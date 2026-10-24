@@ -203,7 +203,15 @@ export const BookingDemo: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
         {/* Stepper Navigation (Matching Panels 2 & 3 in screenshot) */}
-        <div className="max-w-2xl mx-auto mb-10">
+        <div className="max-w-2xl mx-auto mb-6 sm:mb-10 px-1">
+          {/* Mobile Current Step Headline */}
+          <div className="sm:hidden text-center mb-3">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-[#dfc299]">
+              Step {currentStep} of {steps.length}
+            </span>
+            <h3 className="text-sm font-bold text-stone-100">{steps[currentStep - 1].label}</h3>
+          </div>
+
           <div className="flex items-center justify-between relative">
             <div
               className={`absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 z-0 ${
@@ -224,7 +232,7 @@ export const BookingDemo: React.FC = () => {
                     onClick={() => {
                       if (st.num < currentStep) handleStepChange(st.num)
                     }}
-                    className={`w-9 h-9 rounded-full flex items-center justify-center font-bold text-xs transition-all interactive-scale ${
+                    className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center font-bold text-xs transition-all interactive-scale active:scale-95 ${
                       isCurrent
                         ? 'bg-gradient-to-br from-[#dfc299] to-[#c5a880] text-[#0c0a09] ring-4 ring-[#c5a880]/30 shadow-lg'
                         : isPassed
@@ -234,13 +242,13 @@ export const BookingDemo: React.FC = () => {
                         : 'bg-white border-2 border-stone-300 text-stone-500 shadow-sm'
                     }`}
                   >
-                    {isPassed ? <CheckCircle2 className="w-5 h-5 stroke-[2.5]" /> : st.num}
+                    {isPassed ? <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" /> : st.num}
                   </button>
                   <span
-                    className={`text-[11px] font-bold mt-2 ${
+                    className={`text-[10px] sm:text-[11px] font-bold mt-1.5 sm:mt-2 text-center ${
                       isCurrent
                         ? 'text-[#dfc299] font-extrabold'
-                        : 'opacity-60'
+                        : 'opacity-60 hidden sm:block'
                     }`}
                   >
                     {st.label}
@@ -559,23 +567,23 @@ export const BookingDemo: React.FC = () => {
                         </div>
 
                         {/* Days matrix */}
-                        <div className="grid grid-cols-7 gap-1 text-center text-xs font-semibold">
-                          <span className="p-2 opacity-25">24</span>
-                          <span className="p-2 opacity-25">25</span>
-                          <span className="p-2 opacity-25">26</span>
-                          <span className="p-2 opacity-25">27</span>
-                          <span className="p-2 opacity-25">28</span>
-                          <span className="p-2">1</span>
-                          <span className="p-2">2</span>
-                          <span className="p-2">3</span>
-                          <span className="p-2">4</span>
-                          <span className="p-2">5</span>
-                          <span className="p-2">6</span>
-                          <span className="p-2">7</span>
-                          <span className="p-2">8</span>
-                          <span className="p-2">9</span>
-                          <span className="p-2">10</span>
-                          <span className="p-2">11</span>
+                        <div className="grid grid-cols-7 gap-1 text-center text-[11px] sm:text-xs font-semibold">
+                          <span className="p-1 sm:p-2 opacity-25">24</span>
+                          <span className="p-1 sm:p-2 opacity-25">25</span>
+                          <span className="p-1 sm:p-2 opacity-25">26</span>
+                          <span className="p-1 sm:p-2 opacity-25">27</span>
+                          <span className="p-1 sm:p-2 opacity-25">28</span>
+                          <span className="p-1 sm:p-2">1</span>
+                          <span className="p-1 sm:p-2">2</span>
+                          <span className="p-1 sm:p-2">3</span>
+                          <span className="p-1 sm:p-2">4</span>
+                          <span className="p-1 sm:p-2">5</span>
+                          <span className="p-1 sm:p-2">6</span>
+                          <span className="p-1 sm:p-2">7</span>
+                          <span className="p-1 sm:p-2">8</span>
+                          <span className="p-1 sm:p-2">9</span>
+                          <span className="p-1 sm:p-2">10</span>
+                          <span className="p-1 sm:p-2">11</span>
 
                           {/* Selectable Days */}
                           {[12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28].map(
@@ -587,7 +595,7 @@ export const BookingDemo: React.FC = () => {
                                   key={day}
                                   type="button"
                                   onClick={() => setSelectedDate(dateStr)}
-                                  className={`p-2 rounded-xl transition-all cursor-pointer font-bold interactive-scale ${
+                                  className={`p-1.5 sm:p-2 rounded-xl transition-all cursor-pointer font-bold interactive-scale active:scale-95 ${
                                     isSelected
                                       ? 'bg-gradient-to-r from-[#dfc299] to-[#c5a880] text-[#0c0a09] shadow-md shadow-[#c5a880]/30 ring-2 ring-[#c5a880]/40'
                                       : isDark

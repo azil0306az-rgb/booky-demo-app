@@ -45,39 +45,39 @@ export const HowItWorksSection: React.FC = () => {
   return (
     <section
       id="how-it-works"
-      className={`py-24 border-t transition-colors duration-300 ${
+      className={`py-14 sm:py-24 border-t transition-colors duration-300 ${
         isDark ? 'bg-[#0f0d0b] border-[#c5a880]/20' : 'bg-[#f7f2ea] border-[#c5a880]/25'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
           <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#c5a880] px-4 py-1.5 rounded-full bg-[#c5a880]/10 border border-[#c5a880]/30 inline-block">
             OPERATIONAL METHODOLOGY
           </span>
           <h2
-            className={`text-3xl sm:text-4xl md:text-5xl font-classic-serif font-normal mt-4 leading-tight ${
+            className={`text-2xl sm:text-4xl md:text-5xl font-classic-serif font-normal mt-3 sm:mt-4 leading-tight ${
               isDark ? 'text-[#f5f0eb]' : 'text-[#1c1917]'
             }`}
           >
             Streamlined from First Click to Completed Service
           </h2>
-          <p className="text-stone-400 text-sm sm:text-base mt-3 max-w-xl mx-auto font-light leading-relaxed">
+          <p className="text-stone-400 text-xs sm:text-base mt-2 sm:mt-3 max-w-xl mx-auto font-light leading-relaxed">
             Eliminate phone tag, double bookings, and manual admin friction with fully orchestrated luxury booking pipelines.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-5 sm:gap-8">
           {steps.map((step) => (
             <div
               key={step.num}
-              className={`rounded-3xl p-8 relative group transition-all duration-300 hover:-translate-y-1 border ${
+              className={`rounded-3xl p-6 sm:p-8 relative group transition-all duration-300 hover:-translate-y-1 border ${
                 isDark
                   ? 'neu-raised border-[#c5a880]/20 hover:border-[#c5a880]/50'
                   : 'bg-white border-[#c5a880]/30 hover:border-[#c5a880]/60 shadow-md shadow-stone-200/50'
               }`}
             >
-              <div className="flex items-center justify-between mb-6">
-                <span className="text-4xl font-classic-serif font-light transition-colors text-stone-400 dark:text-stone-600 group-hover:text-[#dfc299]">
+              <div className="flex items-center justify-between mb-4 sm:mb-6">
+                <span className="text-3xl sm:text-4xl font-classic-serif font-light transition-colors text-stone-400 dark:text-stone-600 group-hover:text-[#dfc299]">
                   {step.num}
                 </span>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-[#dfc299] bg-[#c5a880]/15 px-3 py-1 rounded-full border border-[#c5a880]/30">
@@ -85,7 +85,7 @@ export const HowItWorksSection: React.FC = () => {
                 </span>
               </div>
               <h3
-                className={`text-xl font-classic-serif font-medium mb-3 ${
+                className={`text-lg sm:text-xl font-classic-serif font-medium mb-2 sm:mb-3 ${
                   isDark ? 'text-white' : 'text-stone-900'
                 }`}
               >
@@ -161,28 +161,28 @@ export const FeaturesShowcase: React.FC = () => {
   return (
     <section
       id="features"
-      className={`py-24 border-t transition-colors duration-300 ${
+      className={`py-14 sm:py-24 border-t transition-colors duration-300 ${
         isDark ? 'bg-[#0a0908] border-[#c5a880]/20' : 'bg-[#faf7f2] border-[#c5a880]/25'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
           <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#c5a880] px-4 py-1.5 rounded-full bg-[#c5a880]/10 border border-[#c5a880]/30 inline-block">
             ENTERPRISE CAPABILITIES
           </span>
           <h2
-            className={`text-3xl sm:text-4xl md:text-5xl font-classic-serif font-normal mt-4 leading-tight ${
+            className={`text-2xl sm:text-4xl md:text-5xl font-classic-serif font-normal mt-3 sm:mt-4 leading-tight ${
               isDark ? 'text-[#f5f0eb]' : 'text-[#1c1917]'
             }`}
           >
             Engineered for High-Efficiency Service Operations
           </h2>
-          <p className="text-stone-400 text-sm sm:text-base mt-3 max-w-xl mx-auto font-light leading-relaxed">
+          <p className="text-stone-400 text-xs sm:text-base mt-2 sm:mt-3 max-w-xl mx-auto font-light leading-relaxed">
             Everything your prestige enterprise requires to welcome clients, coordinate schedules, and automate routine communications.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {features.map((feat, idx) => {
             const Icon = feat.icon
             const isSelected = activeTab === idx
@@ -190,7 +190,7 @@ export const FeaturesShowcase: React.FC = () => {
               <div
                 key={feat.title}
                 onClick={() => setActiveTab(idx)}
-                className={`p-6 sm:p-7 rounded-3xl transition-all cursor-pointer border ${
+                className={`p-5 sm:p-7 rounded-3xl transition-all cursor-pointer border ${
                   isSelected
                     ? isDark
                       ? 'bg-[#181411] border-[#c5a880] shadow-xl shadow-[#c5a880]/10'
@@ -200,9 +200,9 @@ export const FeaturesShowcase: React.FC = () => {
                     : 'bg-white/80 border-[#c5a880]/25 hover:border-[#c5a880]/40 shadow-sm'
                 }`}
               >
-                <div className="flex items-center gap-3.5 mb-4">
+                <div className="flex items-center gap-3.5 mb-3 sm:mb-4">
                   <div
-                    className={`w-12 h-12 rounded-2xl flex items-center justify-center font-bold transition-transform ${
+                    className={`w-11 h-11 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center font-bold transition-transform ${
                       isSelected
                         ? 'bg-gradient-to-r from-[#dfc299] to-[#c5a880] text-[#14100c] scale-105 shadow-md'
                         : isDark
@@ -224,7 +224,7 @@ export const FeaturesShowcase: React.FC = () => {
                   </div>
                 </div>
 
-                <p className="text-xs sm:text-sm text-stone-400 leading-relaxed mb-4 font-light">
+                <p className="text-xs sm:text-sm text-stone-400 leading-relaxed mb-3 sm:mb-4 font-light">
                   {feat.detail}
                 </p>
 
@@ -247,19 +247,19 @@ export const WorkflowPreviewSection: React.FC = () => {
 
   return (
     <section
-      className={`py-24 border-t transition-colors duration-300 ${
+      className={`py-14 sm:py-24 border-t transition-colors duration-300 ${
         isDark ? 'bg-[#0f0d0b] border-[#c5a880]/20' : 'bg-[#f7f2ea] border-[#c5a880]/25'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          className={`rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden border ${
+          className={`rounded-3xl p-5 sm:p-12 shadow-2xl relative overflow-hidden border ${
             isDark
               ? 'bg-[#151210] border-[#c5a880]/30 shadow-black/80'
               : 'bg-white border-[#c5a880]/35 shadow-stone-200/60'
           }`}
         >
-          <div className="max-w-3xl mb-8">
+          <div className="max-w-3xl mb-6 sm:mb-8">
             <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#c5a880] px-4 py-1.5 rounded-full bg-[#c5a880]/10 border border-[#c5a880]/30 inline-block">
               SYNCHRONIZED AUTOMATION ENGINE
             </span>
@@ -276,7 +276,7 @@ export const WorkflowPreviewSection: React.FC = () => {
           </div>
 
           {/* Workflow Step Diagram with Classic Bronze Styling */}
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-3.5 pt-2">
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-2.5 sm:gap-3.5 pt-2">
             {[
               { title: '1. Booking Received', status: 'Triggered' },
               { title: '2. Validate Slot', status: 'Conflict Check' },
@@ -287,37 +287,37 @@ export const WorkflowPreviewSection: React.FC = () => {
             ].map((st, i) => (
               <div
                 key={i}
-                className={`p-4 rounded-2xl border flex flex-col justify-between space-y-3 ${
+                className={`p-3 sm:p-4 rounded-2xl border flex flex-col justify-between space-y-2.5 sm:space-y-3 ${
                   isDark
                     ? 'bg-[#0e0c0a] border-[#c5a880]/15 shadow-inner'
                     : 'bg-[#faf7f2] border-[#c5a880]/20 shadow-sm'
                 }`}
               >
-                <div className="w-7 h-7 rounded-full bg-[#c5a880]/20 text-[#dfc299] text-xs font-bold flex items-center justify-center border border-[#c5a880]/30">
+                <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#c5a880]/20 text-[#dfc299] text-xs font-bold flex items-center justify-center border border-[#c5a880]/30">
                   {i + 1}
                 </div>
                 <div>
                   <p
-                    className={`text-xs font-bold leading-tight ${
+                    className={`text-[11px] sm:text-xs font-bold leading-tight ${
                       isDark ? 'text-white' : 'text-stone-900'
                     }`}
                   >
                     {st.title}
                   </p>
-                  <p className="text-[10px] text-stone-400 mt-1 font-mono">{st.status}</p>
+                  <p className="text-[9px] sm:text-[10px] text-stone-400 mt-1 font-mono">{st.status}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="mt-8 pt-6 border-t border-stone-200/20 dark:border-stone-800/80 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2 text-xs text-stone-400">
-              <ShieldCheck className="w-4 h-4 text-[#dfc299]" />
+          <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-stone-200/20 dark:border-stone-800/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-2 text-xs text-stone-400 text-center sm:text-left">
+              <ShieldCheck className="w-4 h-4 text-[#dfc299] shrink-0" />
               <span>Simulated local event bus with zero third-party leakage.</span>
             </div>
             <Link
               to="/appointment-automation/dashboard/automation"
-              className="px-6 py-2.5 rounded-full font-bold uppercase tracking-wider text-xs neu-gold-btn shadow-md transition-all flex items-center gap-2"
+              className="w-full sm:w-auto px-6 py-2.5 rounded-full font-bold uppercase tracking-wider text-xs neu-gold-btn shadow-md transition-all flex items-center justify-center gap-2"
             >
               <span>Inspect Workflow in Dashboard</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -360,17 +360,17 @@ export const FAQSection: React.FC = () => {
   return (
     <section
       id="faq"
-      className={`py-24 border-t transition-colors duration-300 ${
+      className={`py-14 sm:py-24 border-t transition-colors duration-300 ${
         isDark ? 'bg-[#0a0908] border-[#c5a880]/20' : 'bg-[#faf7f2] border-[#c5a880]/25'
       }`}
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 sm:mb-12">
           <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#c5a880] px-4 py-1.5 rounded-full bg-[#c5a880]/10 border border-[#c5a880]/30 inline-block">
             FREQUENT INQUIRIES
           </span>
           <h2
-            className={`text-3xl sm:text-4xl font-classic-serif font-normal mt-3 ${
+            className={`text-2xl sm:text-4xl font-classic-serif font-normal mt-3 ${
               isDark ? 'text-[#f5f0eb]' : 'text-[#1c1917]'
             }`}
           >
@@ -378,7 +378,7 @@ export const FAQSection: React.FC = () => {
           </h2>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {faqs.map((faq, i) => {
             const isOpen = openIndex === i
             return (
@@ -392,19 +392,19 @@ export const FAQSection: React.FC = () => {
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className={`w-full text-left p-5 flex items-center justify-between font-medium text-sm sm:text-base ${
+                  className={`w-full text-left p-4 sm:p-5 flex items-center justify-between font-medium text-sm sm:text-base gap-3 ${
                     isDark ? 'text-white' : 'text-stone-900'
                   }`}
                 >
-                  <span className="font-classic-serif text-lg">{faq.q}</span>
+                  <span className="font-classic-serif text-base sm:text-lg">{faq.q}</span>
                   <ChevronDown
-                    className={`w-4 h-4 text-[#dfc299] transition-transform ${
+                    className={`w-4 h-4 text-[#dfc299] shrink-0 transition-transform duration-300 ${
                       isOpen ? 'rotate-180' : ''
                     }`}
                   />
                 </button>
                 {isOpen && (
-                  <div className="px-5 pb-5 text-sm text-stone-400 leading-relaxed border-t border-stone-200/20 dark:border-stone-800/80 pt-3 font-light">
+                  <div className="px-4 sm:px-5 pb-4 sm:pb-5 text-xs sm:text-sm text-stone-400 leading-relaxed border-t border-stone-200/20 dark:border-stone-800/80 pt-3 font-light">
                     {faq.a}
                   </div>
                 )}
@@ -423,14 +423,14 @@ export const LandingFooter: React.FC = () => {
 
   return (
     <footer
-      className={`border-t py-14 text-xs transition-colors duration-300 ${
+      className={`border-t py-10 sm:py-14 text-xs transition-colors duration-300 ${
         isDark ? 'bg-[#080706] border-[#c5a880]/20 text-stone-400' : 'bg-white border-[#c5a880]/25 text-stone-500'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-[#c5a880]/15">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 sm:pb-8 border-b border-[#c5a880]/15 text-center md:text-left">
           <BrandLogo />
-          <div className="flex flex-wrap items-center gap-7 text-xs font-semibold tracking-wider uppercase">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-7 text-xs font-semibold tracking-wider uppercase">
             <Link to="/appointment-automation" className="hover:text-[#dfc299] transition-colors">
               Home
             </Link>
@@ -446,7 +446,7 @@ export const LandingFooter: React.FC = () => {
           </div>
         </div>
 
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px]">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-center sm:text-left">
           <p>
             © {new Date().getFullYear()} Bookly. Built under{' '}
             <a
