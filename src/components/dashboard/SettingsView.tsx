@@ -42,12 +42,12 @@ export const SettingsView: React.FC = () => {
 
       {/* Preset Switcher Card */}
       <div
-        className={`rounded-3xl p-6 space-y-4 transition-all ${
-          isDark ? 'neu-raised' : 'neu-raised'
+        className={`rounded-3xl p-6 space-y-4 transition-all border ${
+          isDark ? 'neu-raised border-[#c5a880]/20' : 'neu-raised border-[#c5a880]/30'
         }`}
       >
-        <div className="flex items-center gap-2 pb-3 border-b border-slate-200/40 dark:border-slate-800">
-          <Sliders className="w-5 h-5 text-lime-500" />
+        <div className="flex items-center gap-2 pb-3 border-b border-stone-200/40 dark:border-stone-800">
+          <Sliders className="w-5 h-5 text-[#dfc299]" />
           <h2 className="text-base font-bold">Active Industry Preset</h2>
         </div>
 
@@ -64,10 +64,10 @@ export const SettingsView: React.FC = () => {
                 onClick={() => setIndustry(ind.id as IndustryId)}
                 className={`p-3.5 rounded-2xl border text-left transition-all ${
                   isSelected
-                    ? 'border-lime-400 bg-lime-400/15 ring-2 ring-lime-400/30 shadow-md'
+                    ? 'border-[#c5a880] bg-[#c5a880]/15 ring-2 ring-[#c5a880]/30 shadow-md'
                     : isDark
-                    ? 'border-slate-800 bg-[#0e1420] hover:border-slate-700'
-                    : 'border-slate-200 bg-slate-50 hover:border-slate-300'
+                    ? 'border-stone-800 bg-[#151210] hover:border-stone-700'
+                    : 'border-stone-200 bg-stone-50 hover:border-stone-300'
                 }`}
               >
                 <span className="font-bold text-xs block">{ind.name}</span>
@@ -80,18 +80,18 @@ export const SettingsView: React.FC = () => {
 
       {/* Automation Rules Configuration (Simulated) */}
       <div
-        className={`rounded-3xl p-6 space-y-4 transition-all ${
-          isDark ? 'neu-raised' : 'neu-raised'
+        className={`rounded-3xl p-6 space-y-4 transition-all border ${
+          isDark ? 'neu-raised border-[#c5a880]/20' : 'neu-raised border-[#c5a880]/30'
         }`}
       >
-        <h2 className="text-base font-bold pb-3 border-b border-slate-200/40 dark:border-slate-800">
+        <h2 className="text-base font-bold pb-3 border-b border-stone-200/40 dark:border-stone-800">
           Scheduling & Buffer Rules
         </h2>
 
         <div className="grid sm:grid-cols-2 gap-4 text-xs">
           <div
             className={`p-4 rounded-2xl border space-y-1 ${
-              isDark ? 'bg-[#0e1420] border-slate-800' : 'bg-slate-50 border-slate-200'
+              isDark ? 'bg-[#151210] border-stone-800' : 'bg-stone-50 border-stone-200'
             }`}
           >
             <span className="opacity-60 font-semibold">Turnover Sanitation Buffer:</span>
@@ -101,7 +101,7 @@ export const SettingsView: React.FC = () => {
 
           <div
             className={`p-4 rounded-2xl border space-y-1 ${
-              isDark ? 'bg-[#0e1420] border-slate-800' : 'bg-slate-50 border-slate-200'
+              isDark ? 'bg-[#151210] border-stone-800' : 'bg-stone-50 border-stone-200'
             }`}
           >
             <span className="opacity-60 font-semibold">Automated Reminder Sequences:</span>
@@ -113,11 +113,11 @@ export const SettingsView: React.FC = () => {
 
       {/* Reset Demo State */}
       <div
-        className={`rounded-3xl p-6 space-y-4 transition-all ${
-          isDark ? 'neu-raised' : 'neu-raised'
+        className={`rounded-3xl p-6 space-y-4 transition-all border ${
+          isDark ? 'neu-raised border-[#c5a880]/20' : 'neu-raised border-[#c5a880]/30'
         }`}
       >
-        <div className="flex items-center gap-2 pb-3 border-b border-slate-200/40 dark:border-slate-800 text-rose-500">
+        <div className="flex items-center gap-2 pb-3 border-b border-stone-200/40 dark:border-stone-800 text-rose-500">
           <RotateCcw className="w-5 h-5" />
           <h2 className="text-base font-bold">Reset Prototype Demo</h2>
         </div>
@@ -128,7 +128,7 @@ export const SettingsView: React.FC = () => {
 
         <button
           onClick={handleReset}
-          className="px-6 py-2.5 rounded-xl font-bold bg-rose-600 hover:bg-rose-700 text-white text-xs shadow-md shadow-rose-600/20 flex items-center gap-2 transition-all"
+          className="px-6 py-2.5 rounded-full font-bold bg-rose-600 hover:bg-rose-700 text-white text-xs shadow-md shadow-rose-600/20 flex items-center gap-2 transition-all uppercase tracking-wider"
         >
           <RotateCcw className="w-4 h-4" />
           <span>Reset All Demo Data</span>
@@ -138,11 +138,11 @@ export const SettingsView: React.FC = () => {
       {/* Prototype Attribution */}
       <div
         className={`p-6 rounded-3xl border text-xs space-y-2 ${
-          isDark ? 'bg-[#0f1725] border-slate-800 text-slate-400' : 'bg-slate-100 border-slate-200 text-slate-600'
+          isDark ? 'bg-[#151210] border-stone-800 text-stone-400' : 'bg-stone-100 border-stone-200 text-stone-600'
         }`}
       >
         <div className="flex items-center gap-2 font-bold text-sm">
-          <ShieldCheck className="w-4 h-4 text-lime-500" />
+          <ShieldCheck className="w-4 h-4 text-[#dfc299]" />
           <span>Dawnexus Showcase Prototype Boundaries</span>
         </div>
         <p className="leading-relaxed">

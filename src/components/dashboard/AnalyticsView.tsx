@@ -38,7 +38,7 @@ export const AnalyticsView: React.FC = () => {
       {/* Top Controls */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2">
         <div>
-          <h1 className="text-2xl font-extrabold tracking-tight">Analytics & Intelligence</h1>
+          <h1 className="text-3xl font-classic-serif font-normal tracking-tight">Analytics & Intelligence</h1>
           <p className="text-xs sm:text-sm opacity-60">
             Real-time conversion funnels, provider utilization, and automated retention metrics.
           </p>
@@ -48,8 +48,8 @@ export const AnalyticsView: React.FC = () => {
           <select
             value={timeRange}
             onChange={(e) => setTimeRange(e.target.value)}
-            className={`px-3 py-2 rounded-xl text-xs font-bold border focus:outline-none focus:ring-2 focus:ring-lime-400 cursor-pointer ${
-              isDark ? 'bg-[#0f1724] border-slate-700 text-white' : 'bg-white border-slate-300 text-slate-800 shadow-sm'
+            className={`px-3 py-2 rounded-xl text-xs font-bold border focus:outline-none focus:ring-2 focus:ring-[#c5a880] cursor-pointer ${
+              isDark ? 'bg-[#151210] border-stone-800 text-white' : 'bg-white border-stone-300 text-stone-800 shadow-sm'
             }`}
           >
             <option value="7">Last 7 Days</option>
@@ -59,7 +59,7 @@ export const AnalyticsView: React.FC = () => {
 
           <button
             onClick={exportAppointmentsCSV}
-            className="px-4 py-2 rounded-xl text-xs font-bold bg-lime-400 hover:bg-lime-300 text-slate-950 shadow-md shadow-lime-500/20 flex items-center gap-2 transition-all interactive-scale"
+            className="px-5 py-2.5 rounded-full text-xs font-bold neu-gold-btn uppercase tracking-wider flex items-center gap-2 transition-all interactive-scale shadow-md"
           >
             <Download className="w-3.5 h-3.5 stroke-[2.5]" />
             <span>Export CSV Report</span>
@@ -75,22 +75,22 @@ export const AnalyticsView: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Metric 1: Total Bookings */}
         <div
-          className={`p-5 rounded-3xl space-y-2 transition-all ${
-            isDark ? 'neu-raised' : 'neu-raised'
+          className={`p-5 rounded-3xl space-y-2 transition-all border ${
+            isDark ? 'neu-raised border-[#c5a880]/20' : 'neu-raised border-[#c5a880]/30'
           }`}
         >
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold opacity-60">Total Bookings</span>
             <span
               className={`w-8 h-8 rounded-xl flex items-center justify-center font-bold ${
-                isDark ? 'bg-slate-800 text-slate-300' : 'bg-slate-100 text-slate-700'
+                isDark ? 'bg-stone-800 text-stone-300' : 'bg-stone-100 text-stone-700'
               }`}
             >
               <Calendar className="w-4 h-4" />
             </span>
           </div>
           <div className="flex items-baseline justify-between">
-            <span className="text-3xl font-extrabold">248</span>
+            <span className="text-3xl font-classic-serif font-normal">248</span>
             <span className="inline-flex items-center text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded-md">
               <TrendingUp className="w-3 h-3 mr-1" />
               +12%
@@ -101,18 +101,18 @@ export const AnalyticsView: React.FC = () => {
 
         {/* Metric 2: Revenue */}
         <div
-          className={`p-5 rounded-3xl space-y-2 transition-all ${
-            isDark ? 'neu-raised' : 'neu-raised'
+          className={`p-5 rounded-3xl space-y-2 transition-all border ${
+            isDark ? 'neu-raised border-[#c5a880]/20' : 'neu-raised border-[#c5a880]/30'
           }`}
         >
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold opacity-60">Revenue (Simulated)</span>
-            <span className="w-8 h-8 rounded-xl bg-lime-400/20 text-lime-600 dark:text-lime-400 flex items-center justify-center font-bold">
+            <span className="w-8 h-8 rounded-xl bg-[#c5a880]/20 text-[#dfc299] flex items-center justify-center font-bold">
               <DollarSign className="w-4 h-4" />
             </span>
           </div>
           <div className="flex items-baseline justify-between">
-            <span className="text-3xl font-extrabold text-lime-600 dark:text-lime-400">
+            <span className="text-3xl font-classic-serif font-normal text-[#dfc299]">
               $18,450
             </span>
             <span className="inline-flex items-center text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded-md">
@@ -255,40 +255,40 @@ export const AnalyticsView: React.FC = () => {
               <div>
                 <div className="flex justify-between font-bold mb-1">
                   <span>Instagram / Social Link</span>
-                  <span className="text-lime-600 dark:text-lime-400">42%</span>
+                  <span className="text-[#dfc299]">42%</span>
                 </div>
-                <div className="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                  <div className="bg-lime-500 h-full rounded-full" style={{ width: '42%' }} />
+                <div className="w-full bg-stone-200 dark:bg-stone-800 h-2 rounded-full overflow-hidden">
+                  <div className="bg-gradient-to-r from-[#dfc299] to-[#c5a880] h-full rounded-full" style={{ width: '42%' }} />
                 </div>
               </div>
 
               <div>
                 <div className="flex justify-between font-bold mb-1">
                   <span>Google Search & Maps</span>
-                  <span className="text-blue-500">28%</span>
+                  <span className="text-[#c5a880]">28%</span>
                 </div>
-                <div className="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                  <div className="bg-blue-500 h-full rounded-full" style={{ width: '28%' }} />
+                <div className="w-full bg-stone-200 dark:bg-stone-800 h-2 rounded-full overflow-hidden">
+                  <div className="bg-[#c5a880] h-full rounded-full" style={{ width: '28%' }} />
                 </div>
               </div>
 
               <div>
                 <div className="flex justify-between font-bold mb-1">
                   <span>Direct / Website QR</span>
-                  <span className="text-purple-500">18%</span>
+                  <span className="text-stone-400">18%</span>
                 </div>
-                <div className="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                  <div className="bg-purple-500 h-full rounded-full" style={{ width: '18%' }} />
+                <div className="w-full bg-stone-200 dark:bg-stone-800 h-2 rounded-full overflow-hidden">
+                  <div className="bg-stone-600 h-full rounded-full" style={{ width: '18%' }} />
                 </div>
               </div>
 
               <div>
                 <div className="flex justify-between font-bold mb-1">
                   <span>Customer Referrals</span>
-                  <span className="text-emerald-500">12%</span>
+                  <span className="text-amber-500">12%</span>
                 </div>
-                <div className="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                  <div className="bg-emerald-500 h-full rounded-full" style={{ width: '12%' }} />
+                <div className="w-full bg-stone-200 dark:bg-stone-800 h-2 rounded-full overflow-hidden">
+                  <div className="bg-amber-600 h-full rounded-full" style={{ width: '12%' }} />
                 </div>
               </div>
             </div>
@@ -296,12 +296,12 @@ export const AnalyticsView: React.FC = () => {
 
           {/* Staff Utilization Card */}
           <div
-            className={`rounded-3xl p-6 space-y-4 transition-all ${
-              isDark ? 'neu-raised' : 'neu-raised'
+            className={`rounded-3xl p-6 space-y-4 transition-all border ${
+              isDark ? 'neu-raised border-[#c5a880]/20' : 'neu-raised border-[#c5a880]/30'
             }`}
           >
-            <h3 className="text-sm font-bold pb-2 border-b border-slate-200/40 dark:border-slate-800">
-              Staff Utilization
+            <h3 className="text-sm font-bold pb-2 border-b border-stone-200/40 dark:border-stone-800">
+              Specialist Utilization
             </h3>
 
             <div className="space-y-3 text-xs">
@@ -311,11 +311,11 @@ export const AnalyticsView: React.FC = () => {
                   <div key={st.id}>
                     <div className="flex justify-between font-semibold mb-1">
                       <span>{st.name} ({st.role})</span>
-                      <span className="font-extrabold">{util}%</span>
+                      <span className="font-extrabold text-[#dfc299]">{util}%</span>
                     </div>
-                    <div className="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                    <div className="w-full bg-stone-200 dark:bg-stone-800 h-2 rounded-full overflow-hidden">
                       <div
-                        className="bg-lime-500 h-full rounded-full transition-all duration-500"
+                        className="bg-gradient-to-r from-[#dfc299] to-[#c5a880] h-full rounded-full transition-all duration-500"
                         style={{ width: `${util}%` }}
                       />
                     </div>

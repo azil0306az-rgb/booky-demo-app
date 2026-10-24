@@ -263,3 +263,4 @@ export const SkeletonAutomationFeed: React.FC = () => (
     ))}
   </div>
 )
+

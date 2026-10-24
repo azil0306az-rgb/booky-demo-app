@@ -59,7 +59,7 @@ export const AppointmentsView: React.FC = () => {
       {/* Header and CSV Export */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2">
         <div>
-          <h1 className="text-2xl font-extrabold tracking-tight">Appointments Management</h1>
+          <h1 className="text-3xl font-classic-serif font-normal tracking-tight">Appointments Management</h1>
           <p className="text-xs sm:text-sm opacity-60">
             View, search, reschedule, or cancel simulated bookings across your entire schedule.
           </p>
@@ -67,7 +67,7 @@ export const AppointmentsView: React.FC = () => {
 
         <button
           onClick={exportAppointmentsCSV}
-          className="px-4 py-2.5 rounded-xl text-xs font-bold bg-lime-400 hover:bg-lime-300 text-slate-950 shadow-md shadow-lime-500/20 flex items-center gap-2 self-start sm:self-auto"
+          className="px-5 py-2.5 rounded-full text-xs font-bold neu-gold-btn uppercase tracking-wider flex items-center gap-2 self-start sm:self-auto shadow-md"
         >
           <Download className="w-3.5 h-3.5 stroke-[2.5]" />
           <span>Export CSV</span>
@@ -76,20 +76,20 @@ export const AppointmentsView: React.FC = () => {
 
       {/* Filter and Search Bar */}
       <div
-        className={`p-4 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-4 transition-all ${
-          isDark ? 'neu-raised' : 'neu-raised'
+        className={`p-4 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-4 transition-all border ${
+          isDark ? 'neu-raised border-[#c5a880]/20' : 'neu-raised border-[#c5a880]/30'
         }`}
       >
         {/* Search input */}
         <div className="relative w-full sm:w-80">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-stone-400 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search by customer, ref, or service..."
-            className={`w-full pl-9 pr-4 py-2.5 rounded-xl text-xs font-bold border focus:outline-none focus:ring-2 focus:ring-lime-400 ${
-              isDark ? 'bg-[#0e1420] border-slate-700 text-white' : 'bg-slate-50 border-slate-300 text-slate-900'
+            className={`w-full pl-9 pr-4 py-2.5 rounded-xl text-xs font-bold border focus:outline-none focus:ring-2 focus:ring-[#c5a880] ${
+              isDark ? 'bg-[#151210] border-stone-800 text-white' : 'bg-[#fbf9f5] border-stone-300 text-stone-900'
             }`}
           />
         </div>
@@ -162,7 +162,7 @@ export const AppointmentsView: React.FC = () => {
                       isDark ? 'hover:bg-slate-800/40' : 'hover:bg-slate-50'
                     }`}
                   >
-                    <td className="py-3.5 px-4 font-mono font-bold text-lime-600 dark:text-lime-400">
+                    <td className="py-3.5 px-4 font-mono font-bold text-[#dfc299]">
                       {app.bookingReference}
                     </td>
                     <td className="py-3.5 px-4">
@@ -175,7 +175,7 @@ export const AppointmentsView: React.FC = () => {
                       <span className="font-bold">{app.date}</span>
                       <span className="text-[11px] opacity-60 block">{app.time}</span>
                     </td>
-                    <td className="py-3.5 px-4 font-extrabold text-lime-600 dark:text-lime-400">
+                    <td className="py-3.5 px-4 font-classic-serif font-normal text-lg text-[#dfc299]">
                       ${app.price}
                     </td>
                     <td className="py-3.5 px-4">
@@ -295,7 +295,7 @@ export const AppointmentsView: React.FC = () => {
                     {selectedApp.status !== 'cancelled' && (
                       <button
                         onClick={() => setRescheduleOpen(true)}
-                        className="px-5 py-2 rounded-xl bg-lime-400 font-extrabold text-slate-950 shadow-md shadow-lime-500/20"
+                        className="px-5 py-2 rounded-full neu-gold-btn font-bold text-xs uppercase tracking-wider shadow-md"
                       >
                         Reschedule
                       </button>
@@ -313,7 +313,7 @@ export const AppointmentsView: React.FC = () => {
                     value={newDate}
                     onChange={(e) => setNewDate(e.target.value)}
                     className={`w-full p-2.5 rounded-xl border font-semibold ${
-                      isDark ? 'bg-[#0f1724] border-slate-700 text-white' : 'bg-slate-50 border-slate-300'
+                      isDark ? 'bg-[#0f1724] border-stone-700 text-white' : 'bg-stone-50 border-stone-300'
                     }`}
                   />
                 </div>
@@ -323,7 +323,7 @@ export const AppointmentsView: React.FC = () => {
                     value={newTime}
                     onChange={(e) => setNewTime(e.target.value)}
                     className={`w-full p-2.5 rounded-xl border font-semibold ${
-                      isDark ? 'bg-[#0f1724] border-slate-700 text-white' : 'bg-slate-50 border-slate-300'
+                      isDark ? 'bg-[#0f1724] border-stone-700 text-white' : 'bg-stone-50 border-stone-300'
                     }`}
                   >
                     <option value="09:00 AM">09:00 AM</option>
@@ -335,15 +335,15 @@ export const AppointmentsView: React.FC = () => {
                 <div className="flex justify-end gap-2 pt-2">
                   <button
                     onClick={() => setRescheduleOpen(false)}
-                    className={`px-4 py-2 rounded-xl border ${
-                      isDark ? 'border-slate-700 text-slate-400' : 'border-slate-300 text-slate-600'
+                    className={`px-4 py-2 rounded-full border ${
+                      isDark ? 'border-stone-700 text-stone-400' : 'border-stone-300 text-stone-600'
                     }`}
                   >
                     Back
                   </button>
                   <button
                     onClick={handleReschedule}
-                    className="px-5 py-2 rounded-xl bg-lime-400 font-bold text-slate-950 shadow-md"
+                    className="px-5 py-2 rounded-full neu-gold-btn font-bold text-xs uppercase tracking-wider shadow-md"
                   >
                     Apply Reschedule
                   </button>

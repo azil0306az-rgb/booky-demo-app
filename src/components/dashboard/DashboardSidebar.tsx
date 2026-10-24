@@ -56,12 +56,12 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({ onCloseMobil
     <aside
       className={`w-64 flex flex-col justify-between shrink-0 h-screen sticky top-0 transition-colors duration-300 border-r ${
         isDark
-          ? 'bg-[#111622] text-slate-300 border-slate-800'
-          : 'bg-white text-slate-700 border-slate-200 shadow-sm'
+          ? 'bg-[#0e0c0a] text-stone-300 border-[#c5a880]/20'
+          : 'bg-[#faf7f2] text-stone-700 border-[#c5a880]/30 shadow-sm'
       }`}
     >
       {/* Brand Header */}
-      <div className={`p-6 border-b ${isDark ? 'border-slate-800/80' : 'border-slate-200'}`}>
+      <div className={`p-6 border-b ${isDark ? 'border-[#c5a880]/20' : 'border-[#c5a880]/30'}`}>
         <Link to="/appointment-automation" className="block">
           <BrandLogo size="sm" />
         </Link>
@@ -80,27 +80,25 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({ onCloseMobil
               className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all ${
                 isActive
                   ? isDark
-                    ? 'bg-slate-800 text-lime-400 border border-lime-400/30 shadow-inner'
-                    : 'bg-slate-100 text-slate-950 border border-slate-300 shadow-sm'
+                    ? 'bg-[#1e1915] text-[#dfc299] border border-[#c5a880]/40 shadow-inner'
+                    : 'bg-white text-stone-950 border border-[#c5a880]/50 shadow-sm'
                   : isDark
-                  ? 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70'
+                  ? 'text-stone-400 hover:text-stone-200 hover:bg-[#181411]'
+                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
               }`}
             >
               <div className="flex items-center gap-3">
                 <Icon
                   className={`w-4 h-4 ${
                     isActive
-                      ? isDark
-                        ? 'text-lime-400'
-                        : 'text-lime-600'
+                      ? 'text-[#dfc299]'
                       : 'opacity-70'
                   }`}
                 />
                 <span>{item.label}</span>
               </div>
               {item.badge !== undefined && (
-                <span className="w-5 h-5 rounded-full bg-lime-400 text-slate-950 text-[10px] font-black flex items-center justify-center shadow-sm">
+                <span className="w-5 h-5 rounded-full bg-gradient-to-r from-[#dfc299] to-[#c5a880] text-[#120f0d] text-[10px] font-black flex items-center justify-center shadow-sm">
                   {item.badge}
                 </span>
               )}
@@ -112,27 +110,23 @@ export const DashboardSidebar: React.FC<DashboardSidebarProps> = ({ onCloseMobil
       {/* Footer Actions */}
       <div
         className={`p-4 border-t space-y-2 ${
-          isDark ? 'bg-[#0e121b] border-slate-800/80' : 'bg-slate-50 border-slate-200'
+          isDark ? 'bg-[#0a0908] border-[#c5a880]/20' : 'bg-[#f5efe6] border-[#c5a880]/30'
         }`}
       >
         <Link
           to="/appointment-automation/demo"
-          className={`w-full py-2.5 px-3 rounded-xl text-xs font-bold border flex items-center justify-center gap-2 transition-colors ${
-            isDark
-              ? 'bg-slate-800 hover:bg-slate-700 text-slate-200 border-slate-700'
-              : 'bg-white hover:bg-slate-100 text-slate-800 border-slate-300 shadow-sm'
-          }`}
+          className="w-full py-2.5 px-3 rounded-full text-xs font-bold uppercase tracking-wider neu-gold-btn flex items-center justify-center gap-2 shadow-md transition-all"
         >
           <span>Open Booking Demo</span>
-          <ExternalLink className="w-3.5 h-3.5 text-lime-500" />
+          <ExternalLink className="w-3.5 h-3.5" />
         </Link>
 
         <button
           onClick={handleReset}
-          className={`w-full py-2.5 px-3 rounded-xl text-xs font-semibold border flex items-center justify-center gap-2 transition-colors ${
+          className={`w-full py-2.5 px-3 rounded-full text-xs font-semibold border flex items-center justify-center gap-2 transition-colors ${
             isDark
-              ? 'bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white border-slate-800'
-              : 'bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 border-slate-200'
+              ? 'bg-[#181411] hover:bg-[#201b17] text-stone-400 hover:text-white border-[#c5a880]/20'
+              : 'bg-white hover:bg-stone-100 text-stone-600 hover:text-stone-900 border-[#c5a880]/30'
           }`}
         >
           <RotateCcw className="w-3.5 h-3.5" />

@@ -12,6 +12,8 @@ import {
   GraduationCap,
   Wrench,
   PartyPopper,
+  Star,
+  Sparkles,
 } from 'lucide-react'
 import { useApp } from '../../context/AppContext'
 import { IndustryId } from '../../types'
@@ -37,153 +39,249 @@ export const HeroSection: React.FC = () => {
   ]
 
   return (
-    <section id="product" className="relative pt-10 sm:pt-14 pb-24 overflow-hidden transition-colors duration-300">
-      {/* Background radial glow */}
+    <section id="product" className="relative pt-6 sm:pt-10 pb-24 overflow-hidden transition-colors duration-300">
+      {/* Background warm champagne ambient glow */}
       <div
-        className={`absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full blur-[140px] pointer-events-none transition-colors duration-500 ${
-          isDark ? 'bg-lime-500/10' : 'bg-lime-400/15'
+        className={`absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[450px] rounded-full blur-[160px] pointer-events-none transition-colors duration-500 ${
+          isDark ? 'bg-[#c5a880]/10' : 'bg-[#dfc299]/20'
         }`}
       />
       <div
-        className={`absolute top-1/3 right-10 w-[450px] h-[350px] rounded-full blur-[120px] pointer-events-none transition-colors duration-500 ${
-          isDark ? 'bg-indigo-600/10' : 'bg-indigo-300/15'
+        className={`absolute top-1/3 right-10 w-[500px] h-[380px] rounded-full blur-[140px] pointer-events-none transition-colors duration-500 ${
+          isDark ? 'bg-[#9e825a]/10' : 'bg-[#c5a880]/15'
         }`}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          {/* Left Column: Headline and Call-to-actions */}
-          <div className="lg:col-span-6 space-y-8 text-center lg:text-left">
-            {/* Top Pill Badge */}
-            <div
-              className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all ${
-                isDark
-                  ? 'bg-slate-900/90 border border-lime-400/40 text-lime-400 shadow-inner'
-                  : 'bg-white border border-lime-400 text-lime-800 shadow-sm'
-              }`}
-            >
-              <span className="w-2 h-2 rounded-full bg-lime-400 animate-pulse" />
-              <span>APPOINTMENT BOOKING AUTOMATION</span>
-            </div>
+        {/* ==================================================================== */}
+        {/* SECTION 1: PANORAMIC 3D SHOWROOM CENTERPIECE (MATCHING REFERENCE)   */}
+        {/* ==================================================================== */}
+        <Interactive3DHero />
 
-            {/* Headline matching Concept Board */}
-            <h1
-              className={`text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] transition-colors ${
-                isDark ? 'text-white' : 'text-slate-900'
-              }`}
-            >
-              Smarter <br />
-              Bookings <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 via-lime-500 to-emerald-400">
-                Happier Businesses
-              </span>
-            </h1>
-
-            {/* Subhead */}
-            <p
-              className={`text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal transition-colors ${
-                isDark ? 'text-slate-300' : 'text-slate-600'
-              }`}
-            >
-              Modern appointment scheduling with automation, reminders, payments, and powerful insights. Designed for every business, built by Dawnexus.
-            </p>
-
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-              <Link
-                to="/appointment-automation/demo"
-                className="w-full sm:w-auto px-8 py-4 rounded-2xl font-extrabold bg-lime-400 hover:bg-lime-300 text-slate-950 text-base shadow-xl shadow-lime-500/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-3"
-              >
-                <span>Try Booking Demo</span>
-                <ArrowRight className="w-5 h-5 stroke-[2.5]" />
-              </Link>
-
-              <Link
-                to="/appointment-automation/dashboard"
-                className={`w-full sm:w-auto px-7 py-4 rounded-2xl font-bold text-base transition-all flex items-center justify-center gap-3 ${
-                  isDark
-                    ? 'bg-[#151c28] hover:bg-[#1c2536] text-white border border-slate-700/80 shadow-lg'
-                    : 'bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 shadow-md'
-                }`}
-              >
-                <span>Explore Dashboard</span>
-              </Link>
-            </div>
-
-            {/* 3 Tactile Benefit Pillars */}
-            <div
-              className={`grid grid-cols-1 sm:grid-cols-3 gap-3 pt-6 border-t ${
-                isDark ? 'border-slate-800' : 'border-slate-200'
-              }`}
-            >
-              <div
-                className={`flex items-center gap-3 p-3.5 rounded-2xl transition-all ${
-                  isDark
-                    ? 'neu-raised-sm'
-                    : 'bg-white border border-slate-200 shadow-sm'
-                }`}
-              >
-                <div className="w-9 h-9 rounded-xl bg-lime-400/20 text-lime-500 flex items-center justify-center shrink-0">
-                  <Zap className="w-5 h-5" />
-                </div>
-                <div className="text-left">
-                  <p className={`text-xs font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>Automate</p>
-                  <p className="text-[11px] text-slate-400">Save hours</p>
-                </div>
-              </div>
-
-              <div
-                className={`flex items-center gap-3 p-3.5 rounded-2xl transition-all ${
-                  isDark
-                    ? 'neu-raised-sm'
-                    : 'bg-white border border-slate-200 shadow-sm'
-                }`}
-              >
-                <div className="w-9 h-9 rounded-xl bg-emerald-400/20 text-emerald-500 flex items-center justify-center shrink-0">
-                  <TrendingUp className="w-5 h-5" />
-                </div>
-                <div className="text-left">
-                  <p className={`text-xs font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>Reduce no-shows</p>
-                  <p className="text-[11px] text-slate-400">Increase revenue</p>
-                </div>
-              </div>
-
-              <div
-                className={`flex items-center gap-3 p-3.5 rounded-2xl transition-all ${
-                  isDark
-                    ? 'neu-raised-sm'
-                    : 'bg-white border border-slate-200 shadow-sm'
-                }`}
-              >
-                <div className="w-9 h-9 rounded-xl bg-indigo-400/20 text-indigo-500 flex items-center justify-center shrink-0">
-                  <HeartHandshake className="w-5 h-5" />
-                </div>
-                <div className="text-left">
-                  <p className={`text-xs font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>Delight customers</p>
-                  <p className="text-[11px] text-slate-400">Better experience</p>
-                </div>
-              </div>
-            </div>
+        {/* Headline & Overview Hero Bar */}
+        <div className="max-w-3xl mx-auto text-center mt-6 sm:mt-10 space-y-4">
+          <div
+            className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-classic-serif font-medium tracking-[0.2em] uppercase transition-all ${
+              isDark
+                ? 'bg-[#181411] border border-[#c5a880]/35 text-[#dfc299]'
+                : 'bg-white border border-[#c5a880]/40 text-[#8c6d42] shadow-sm'
+            }`}
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-[#dfc299] animate-pulse" />
+            <span>Classic Appointment Booking Automation</span>
           </div>
 
-          {/* Right Column: 3D Interactive Hero Composition */}
-          <div className="lg:col-span-6 relative flex justify-center items-center">
-            <Interactive3DHero />
+          <h1
+            className={`text-4xl sm:text-5xl md:text-6xl font-classic-serif font-normal tracking-wide leading-[1.1] transition-colors ${
+              isDark ? 'text-[#fbf9f5]' : 'text-[#1c1917]'
+            }`}
+          >
+            Smarter Bookings, <br />
+            <span className="italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-[#f3e3ca] via-[#dfc299] to-[#c5a880]">
+              Unrivaled Elegance
+            </span>
+          </h1>
+
+          <p
+            className={`text-sm sm:text-base max-w-xl mx-auto leading-relaxed font-light transition-colors ${
+              isDark ? 'text-stone-300' : 'text-stone-600'
+            }`}
+          >
+            Classic appointment scheduling with automated reminders, multi-currency deposits, provider availability, and operational clarity. Designed for distinguished businesses, built by Dawnexus.
+          </p>
+
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-3">
+            <Link
+              to="/appointment-automation/demo"
+              className="w-full sm:w-auto px-8 py-3.5 rounded-full font-bold uppercase tracking-[0.18em] neu-gold-btn text-xs shadow-xl flex items-center justify-center gap-2.5 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+            >
+              <span>Try Booking Demo</span>
+              <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+            </Link>
+
+            <Link
+              to="/appointment-automation/dashboard"
+              className={`w-full sm:w-auto px-7 py-3.5 rounded-full font-bold uppercase tracking-[0.16em] text-xs transition-all flex items-center justify-center gap-2.5 ${
+                isDark
+                  ? 'bg-[#161311] hover:bg-[#201b17] text-stone-200 border border-[#c5a880]/30 shadow-lg'
+                  : 'bg-white hover:bg-stone-50 text-stone-800 border border-[#c5a880]/40 shadow-sm'
+              }`}
+            >
+              <span>Explore Dashboard</span>
+            </Link>
           </div>
         </div>
 
-        {/* Industry Selector Section (Designed for Every Industry) */}
-        <div id="industries" className="mt-20 pt-10 border-t border-slate-200/80 dark:border-slate-800">
-          <div className="text-center mb-8">
+        {/* ==================================================================== */}
+        {/* SECTION 2: DUAL ROMAN ARCHES ARCHITECTURAL SECTION (MATCHING REF)    */}
+        {/* ==================================================================== */}
+        <div className="mt-24 sm:mt-32 pt-16 border-t border-[#c5a880]/20 text-center">
+          {/* Subtitle */}
+          <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#c5a880] block mb-2">
+            WELCOME TO BOOKLY
+          </span>
+
+          {/* Editorial Headline */}
+          <h2
+            className={`font-classic-serif text-3xl sm:text-4xl md:text-5xl font-normal tracking-wide max-w-3xl mx-auto leading-tight transition-colors ${
+              isDark ? 'text-[#f5f0eb]' : 'text-[#1c1917]'
+            }`}
+          >
+            Exceptional Hospitality and Unmatched Relaxation at Bookly
+          </h2>
+
+          {/* Rating Block */}
+          <div className="mt-4 flex flex-col items-center justify-center space-y-1">
+            <div className="flex items-center gap-2 text-base font-bold text-[#dfc299]">
+              <span>4.9 out of 5</span>
+              <div className="flex text-[#d4af37] text-sm">
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+              </div>
+            </div>
+            <p className="text-[11px] tracking-wider text-stone-400">
+              Based on 5,000+ simulated appointments automated
+            </p>
+          </div>
+
+          {/* Dual Arched Frames Side by Side (Exact Match to Reference Image) */}
+          <div className="grid md:grid-cols-2 gap-8 sm:gap-12 mt-12 max-w-4xl mx-auto">
+            {/* Left Roman Arch Frame: Grand Lobby & Salon */}
+            <div className="group relative">
+              <div
+                className={`luxury-arch overflow-hidden border border-[#c5a880]/35 shadow-2xl relative h-[360px] sm:h-[440px] transition-transform duration-500 group-hover:scale-[1.01] ${
+                  isDark ? 'bg-[#181411]' : 'bg-[#f5efe6]'
+                }`}
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1000&q=85"
+                  alt="Architectural Grand Hall"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 brightness-[0.82]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-0 luxury-arch border border-[#c5a880]/30 pointer-events-none" />
+
+                {/* Bottom Label */}
+                <div className="absolute bottom-6 inset-x-6 text-center text-white">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#dfc299] block mb-1">
+                    Private Chambers
+                  </span>
+                  <h4 className="font-classic-serif text-2xl font-normal">
+                    Grand Suites & Consultations
+                  </h4>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Roman Arch Frame: Fine Dining & VIP Table */}
+            <div className="group relative">
+              <div
+                className={`luxury-arch overflow-hidden border border-[#c5a880]/35 shadow-2xl relative h-[360px] sm:h-[440px] transition-transform duration-500 group-hover:scale-[1.01] ${
+                  isDark ? 'bg-[#181411]' : 'bg-[#f5efe6]'
+                }`}
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=85"
+                  alt="Fine Dining & VIP Wine Setting"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 brightness-[0.82]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-0 luxury-arch border border-[#c5a880]/30 pointer-events-none" />
+
+                {/* Bottom Label */}
+                <div className="absolute bottom-6 inset-x-6 text-center text-white">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#dfc299] block mb-1">
+                    Exclusive Hospitality
+                  </span>
+                  <h4 className="font-classic-serif text-2xl font-normal">
+                    Dine, Relax & Rejuvenate
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ==================================================================== */}
+        {/* SECTION 3: 3 BENEFIT PILLARS                                         */}
+        {/* ==================================================================== */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mt-16 max-w-4xl mx-auto">
+          <div
+            className={`flex items-center gap-4 p-5 rounded-3xl transition-all ${
+              isDark
+                ? 'neu-raised border border-[#c5a880]/20'
+                : 'bg-white border border-[#c5a880]/30 shadow-sm'
+            }`}
+          >
+            <div className="w-11 h-11 rounded-2xl bg-[#c5a880]/15 text-[#dfc299] flex items-center justify-center shrink-0 border border-[#c5a880]/30">
+              <Zap className="w-5 h-5" />
+            </div>
+            <div className="text-left">
+              <p className={`text-sm font-bold ${isDark ? 'text-white' : 'text-stone-900'}`}>
+                Automate Scheduling
+              </p>
+              <p className="text-xs text-stone-400">Save hours every week</p>
+            </div>
+          </div>
+
+          <div
+            className={`flex items-center gap-4 p-5 rounded-3xl transition-all ${
+              isDark
+                ? 'neu-raised border border-[#c5a880]/20'
+                : 'bg-white border border-[#c5a880]/30 shadow-sm'
+            }`}
+          >
+            <div className="w-11 h-11 rounded-2xl bg-[#c5a880]/15 text-[#dfc299] flex items-center justify-center shrink-0 border border-[#c5a880]/30">
+              <TrendingUp className="w-5 h-5" />
+            </div>
+            <div className="text-left">
+              <p className={`text-sm font-bold ${isDark ? 'text-white' : 'text-stone-900'}`}>
+                Curtail No-Shows
+              </p>
+              <p className="text-xs text-stone-400">Increase realized revenue</p>
+            </div>
+          </div>
+
+          <div
+            className={`flex items-center gap-4 p-5 rounded-3xl transition-all ${
+              isDark
+                ? 'neu-raised border border-[#c5a880]/20'
+                : 'bg-white border border-[#c5a880]/30 shadow-sm'
+            }`}
+          >
+            <div className="w-11 h-11 rounded-2xl bg-[#c5a880]/15 text-[#dfc299] flex items-center justify-center shrink-0 border border-[#c5a880]/30">
+              <HeartHandshake className="w-5 h-5" />
+            </div>
+            <div className="text-left">
+              <p className={`text-sm font-bold ${isDark ? 'text-white' : 'text-stone-900'}`}>
+                Delight Prestige Clients
+              </p>
+              <p className="text-xs text-stone-400">Exquisite digital experience</p>
+            </div>
+          </div>
+        </div>
+
+        {/* ==================================================================== */}
+        {/* SECTION 4: INDUSTRY PRESET SELECTOR (FOR PRESTIGIOUS ENTERPRISES)   */}
+        {/* ==================================================================== */}
+        <div id="industries" className="mt-24 pt-12 border-t border-[#c5a880]/20">
+          <div className="text-center mb-10">
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#c5a880] block mb-2">
+              SECTOR SHOWCASE
+            </span>
             <h3
-              className={`text-2xl sm:text-3xl font-extrabold ${
-                isDark ? 'text-white' : 'text-slate-900'
+              className={`text-3xl sm:text-4xl font-classic-serif font-normal ${
+                isDark ? 'text-white' : 'text-stone-900'
               }`}
             >
-              Designed for Every Industry
+              Tailored for Prestigious Industries
             </h3>
-            <p className="text-xs sm:text-sm text-slate-500 mt-1">
-              Switch presets in real-time to load tailored services, pricing, durations, and staff rosters.
+            <p className="text-xs sm:text-sm text-stone-400 mt-2 max-w-lg mx-auto">
+              Switch sectors in real-time to preview customized services, specialized durations, tailored rates, and staff rosters.
             </p>
           </div>
 
@@ -195,23 +293,23 @@ export const HeroSection: React.FC = () => {
                 <button
                   key={ind.id}
                   onClick={() => setIndustry(ind.id)}
-                  className={`p-4 rounded-2xl transition-all text-center flex flex-col items-center justify-center gap-2 group cursor-pointer ${
+                  className={`p-4 rounded-3xl transition-all text-center flex flex-col items-center justify-center gap-2 group cursor-pointer ${
                     isActive
                       ? isDark
-                        ? 'bg-[#182232] border-2 border-lime-400 shadow-lg shadow-lime-500/20 text-white'
-                        : 'bg-white border-2 border-lime-500 shadow-lg shadow-lime-500/20 text-slate-900'
+                        ? 'bg-[#1e1915] border-2 border-[#c5a880] shadow-xl shadow-[#c5a880]/15 text-white'
+                        : 'bg-white border-2 border-[#c5a880] shadow-xl shadow-[#c5a880]/20 text-stone-900'
                       : isDark
-                      ? 'bg-[#111724] hover:bg-[#161f30] border border-slate-800 text-slate-300'
-                      : 'bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 shadow-sm'
+                      ? 'bg-[#151210] hover:bg-[#1a1613] border border-[#c5a880]/20 text-stone-300'
+                      : 'bg-white hover:bg-stone-50 border border-[#c5a880]/25 text-stone-700 shadow-sm'
                   }`}
                 >
                   <div
-                    className={`w-11 h-11 rounded-xl flex items-center justify-center transition-transform group-hover:scale-105 ${
+                    className={`w-11 h-11 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-105 ${
                       isActive
-                        ? 'bg-lime-400 text-slate-950 font-bold shadow-md shadow-lime-500/30'
+                        ? 'bg-gradient-to-r from-[#dfc299] to-[#c5a880] text-[#14100c] font-bold shadow-md'
                         : isDark
-                        ? 'bg-slate-800 text-slate-400 group-hover:text-lime-400'
-                        : 'bg-slate-100 text-slate-600 group-hover:text-lime-700'
+                        ? 'bg-[#221c17] text-stone-400 group-hover:text-[#dfc299]'
+                        : 'bg-stone-100 text-stone-600 group-hover:text-[#8c6d42]'
                     }`}
                   >
                     <Icon className="w-5 h-5" />
@@ -221,14 +319,14 @@ export const HeroSection: React.FC = () => {
                       className={`text-xs font-bold ${
                         isActive
                           ? isDark
-                            ? 'text-lime-300'
-                            : 'text-lime-700 font-extrabold'
+                            ? 'text-[#dfc299]'
+                            : 'text-[#8c6d42] font-extrabold'
                           : ''
                       }`}
                     >
                       {ind.name}
                     </p>
-                    <p className="text-[10px] text-slate-400">{ind.sub}</p>
+                    <p className="text-[10px] text-stone-400">{ind.sub}</p>
                   </div>
                 </button>
               )

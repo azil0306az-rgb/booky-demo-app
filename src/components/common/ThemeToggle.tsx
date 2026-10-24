@@ -17,16 +17,16 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '' }) => {
       aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
       className={`relative inline-flex items-center h-9 w-18 rounded-full p-1 cursor-pointer transition-all duration-300 select-none ${
         isDark
-          ? 'bg-[#151d2c] border border-slate-700/80 shadow-inner'
-          : 'bg-[#e2e8f0] border border-slate-300 shadow-inner'
+          ? 'bg-[#181512] border border-[#c5a880]/30 shadow-inner'
+          : 'bg-[#ebd4b3]/40 border border-[#c5a880]/40 shadow-inner'
       } ${className}`}
     >
       {/* Sliding Tactile Knob */}
       <span
         className={`absolute top-1 w-7 h-7 rounded-full transition-transform duration-300 ease-spring flex items-center justify-center ${
           isDark
-            ? 'translate-x-9 bg-slate-900 border border-slate-700 text-lime-400 shadow-md'
-            : 'translate-x-0 bg-white border border-slate-200 text-amber-500 shadow-md'
+            ? 'translate-x-9 bg-[#241f1a] border border-[#c5a880]/40 text-[#dfc299] shadow-md shadow-black/50'
+            : 'translate-x-0 bg-white border border-[#c5a880]/30 text-[#ab8755] shadow-md shadow-stone-300/60'
         }`}
       >
         {isDark ? <Moon className="w-3.5 h-3.5 stroke-[2.5]" /> : <Sun className="w-3.5 h-3.5 stroke-[2.5]" />}

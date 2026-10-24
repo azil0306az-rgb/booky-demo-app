@@ -81,7 +81,7 @@ export const StaffView: React.FC = () => {
                       <Calendar className="w-3.5 h-3.5" />
                       Active Bookings
                     </span>
-                    <span className="font-extrabold text-lime-600 dark:text-lime-400">
+                    <span className="font-extrabold text-[#dfc299]">
                       {staffApps.length} slots
                     </span>
                   </div>
@@ -107,7 +107,7 @@ export const StaffView: React.FC = () => {
                 </div>
 
                 {/* Specialties */}
-                <div className="mt-4 pt-3 border-t border-slate-200/40 dark:border-slate-800">
+                <div className="mt-4 pt-3 border-t border-stone-200/40 dark:border-stone-800">
                   <span className="text-[10px] font-bold opacity-50 block mb-1.5 uppercase tracking-wider">
                     Assigned Specialties
                   </span>
@@ -117,8 +117,8 @@ export const StaffView: React.FC = () => {
                         key={sp}
                         className={`text-[11px] font-semibold px-2.5 py-1 rounded-lg border ${
                           isDark
-                            ? 'bg-slate-800 border-slate-700 text-slate-300'
-                            : 'bg-slate-100 border-slate-200 text-slate-700'
+                            ? 'bg-stone-800 border-stone-700 text-stone-300'
+                            : 'bg-stone-100 border-stone-200 text-stone-700'
                         }`}
                       >
                         {sp}
@@ -129,14 +129,14 @@ export const StaffView: React.FC = () => {
               </div>
 
               {/* Utilization Bar */}
-              <div className="pt-4 border-t border-slate-200/40 dark:border-slate-800 space-y-1">
+              <div className="pt-4 border-t border-stone-200/40 dark:border-stone-800 space-y-1">
                 <div className="flex justify-between text-xs font-semibold">
                   <span className="opacity-60">Utilization Rate</span>
-                  <span className="font-extrabold text-lime-600 dark:text-lime-400">{utilPct}%</span>
+                  <span className="font-extrabold text-[#dfc299]">{utilPct}%</span>
                 </div>
-                <div className="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                <div className="w-full bg-stone-200 dark:bg-stone-800 h-2 rounded-full overflow-hidden">
                   <div
-                    className="bg-lime-500 h-full rounded-full transition-all duration-500"
+                    className="bg-gradient-to-r from-[#dfc299] to-[#c5a880] h-full rounded-full transition-all duration-500"
                     style={{ width: `${utilPct}%` }}
                   />
                 </div>

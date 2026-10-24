@@ -11,6 +11,8 @@ import {
   ChevronDown,
   ArrowRight,
   Workflow,
+  Sparkles,
+  Star,
 } from 'lucide-react'
 import { BrandLogo } from '../common/BrandLogo'
 import { useApp } from '../../context/AppContext'
@@ -23,7 +25,7 @@ export const HowItWorksSection: React.FC = () => {
     {
       num: '01',
       title: 'Select Service & Professional',
-      desc: 'Clients pick tailored services, browse staff ratings, and select their preferred date and slot with real-time availability check.',
+      desc: 'Clients choose tailored services, browse verified specialist credentials, and select their preferred date and slot with real-time schedule checks.',
       tag: 'Self-Serve Portal',
     },
     {
@@ -43,24 +45,24 @@ export const HowItWorksSection: React.FC = () => {
   return (
     <section
       id="how-it-works"
-      className={`py-20 border-t transition-colors duration-300 ${
-        isDark ? 'bg-[#0d131f] border-slate-800' : 'bg-slate-100/70 border-slate-200'
+      className={`py-24 border-t transition-colors duration-300 ${
+        isDark ? 'bg-[#0f0d0b] border-[#c5a880]/20' : 'bg-[#f7f2ea] border-[#c5a880]/25'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-bold uppercase tracking-wider text-lime-600 dark:text-lime-400 px-3 py-1 rounded-full bg-lime-500/10 border border-lime-500/20">
-            How It Works
+          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#c5a880] px-4 py-1.5 rounded-full bg-[#c5a880]/10 border border-[#c5a880]/30 inline-block">
+            OPERATIONAL METHODOLOGY
           </span>
           <h2
-            className={`text-3xl sm:text-4xl font-extrabold mt-3 ${
-              isDark ? 'text-white' : 'text-slate-900'
+            className={`text-3xl sm:text-4xl md:text-5xl font-classic-serif font-normal mt-4 leading-tight ${
+              isDark ? 'text-[#f5f0eb]' : 'text-[#1c1917]'
             }`}
           >
-            Streamlined from first click to completed service
+            Streamlined from First Click to Completed Service
           </h2>
-          <p className="text-slate-500 dark:text-slate-400 text-sm sm:text-base mt-3">
-            Eliminate phone tag, double bookings, and manual admin work with fully orchestrated booking pipelines.
+          <p className="text-stone-400 text-sm sm:text-base mt-3 max-w-xl mx-auto font-light leading-relaxed">
+            Eliminate phone tag, double bookings, and manual admin friction with fully orchestrated luxury booking pipelines.
           </p>
         </div>
 
@@ -68,24 +70,30 @@ export const HowItWorksSection: React.FC = () => {
           {steps.map((step) => (
             <div
               key={step.num}
-              className={`rounded-3xl p-8 relative group transition-all duration-300 hover:-translate-y-1 ${
+              className={`rounded-3xl p-8 relative group transition-all duration-300 hover:-translate-y-1 border ${
                 isDark
-                  ? 'neu-raised hover:border-lime-500/50'
-                  : 'neu-raised hover:border-lime-500/50'
+                  ? 'neu-raised border-[#c5a880]/20 hover:border-[#c5a880]/50'
+                  : 'bg-white border-[#c5a880]/30 hover:border-[#c5a880]/60 shadow-md shadow-stone-200/50'
               }`}
             >
               <div className="flex items-center justify-between mb-6">
-                <span className="text-4xl font-black font-mono transition-colors text-slate-300 dark:text-slate-700 group-hover:text-lime-500">
+                <span className="text-4xl font-classic-serif font-light transition-colors text-stone-400 dark:text-stone-600 group-hover:text-[#dfc299]">
                   {step.num}
                 </span>
-                <span className="text-[11px] font-bold text-lime-700 dark:text-lime-400 bg-lime-400/15 px-2.5 py-1 rounded-full border border-lime-400/25">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#dfc299] bg-[#c5a880]/15 px-3 py-1 rounded-full border border-[#c5a880]/30">
                   {step.tag}
                 </span>
               </div>
-              <h3 className={`text-lg font-bold mb-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>
+              <h3
+                className={`text-xl font-classic-serif font-medium mb-3 ${
+                  isDark ? 'text-white' : 'text-stone-900'
+                }`}
+              >
                 {step.title}
               </h3>
-              <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">{step.desc}</p>
+              <p className="text-xs sm:text-sm text-stone-400 leading-relaxed font-light">
+                {step.desc}
+              </p>
             </div>
           ))}
         </div>
@@ -113,7 +121,7 @@ export const FeaturesShowcase: React.FC = () => {
       icon: Calendar,
       short: 'Zero overlapping bookings, ever',
       detail:
-        'Enforces configurable sanitization breaks, staff shift blocks, and real-time validation across team members.',
+        'Enforces configurable turnover breaks, staff shift blocks, and real-time validation across all team members.',
       benefit: 'Prevents double-booking disasters',
     },
     {
@@ -125,7 +133,7 @@ export const FeaturesShowcase: React.FC = () => {
       benefit: 'Recovers 85% of vacant cancellation slots',
     },
     {
-      title: 'Simulated Invoicing & Payments',
+      title: 'Simulated Invoicing & Deposits',
       icon: CreditCard,
       short: 'Collect deposits or full service fees',
       detail:
@@ -153,24 +161,24 @@ export const FeaturesShowcase: React.FC = () => {
   return (
     <section
       id="features"
-      className={`py-20 border-t transition-colors duration-300 ${
-        isDark ? 'bg-[#090d14] border-slate-800' : 'bg-[#eaf0f7] border-slate-200'
+      className={`py-24 border-t transition-colors duration-300 ${
+        isDark ? 'bg-[#0a0908] border-[#c5a880]/20' : 'bg-[#faf7f2] border-[#c5a880]/25'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-bold uppercase tracking-wider text-lime-600 dark:text-lime-400 px-3 py-1 rounded-full bg-lime-500/10 border border-lime-500/20">
-            Features Showcase
+          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#c5a880] px-4 py-1.5 rounded-full bg-[#c5a880]/10 border border-[#c5a880]/30 inline-block">
+            ENTERPRISE CAPABILITIES
           </span>
           <h2
-            className={`text-3xl sm:text-4xl font-extrabold mt-3 ${
-              isDark ? 'text-white' : 'text-slate-900'
+            className={`text-3xl sm:text-4xl md:text-5xl font-classic-serif font-normal mt-4 leading-tight ${
+              isDark ? 'text-[#f5f0eb]' : 'text-[#1c1917]'
             }`}
           >
-            Engineered for high-efficiency service operations
+            Engineered for High-Efficiency Service Operations
           </h2>
-          <p className="text-slate-500 dark:text-slate-400 text-sm sm:text-base mt-3">
-            Everything your business needs to attract customers, fill calendars, and automate routine client communication.
+          <p className="text-stone-400 text-sm sm:text-base mt-3 max-w-xl mx-auto font-light leading-relaxed">
+            Everything your prestige enterprise requires to welcome clients, coordinate schedules, and automate routine communications.
           </p>
         </div>
 
@@ -182,42 +190,46 @@ export const FeaturesShowcase: React.FC = () => {
               <div
                 key={feat.title}
                 onClick={() => setActiveTab(idx)}
-                className={`p-6 rounded-3xl transition-all cursor-pointer border ${
+                className={`p-6 sm:p-7 rounded-3xl transition-all cursor-pointer border ${
                   isSelected
                     ? isDark
-                      ? 'bg-[#151d2b] border-lime-400 shadow-xl shadow-lime-500/10'
-                      : 'bg-white border-lime-500 shadow-xl shadow-lime-500/15'
+                      ? 'bg-[#181411] border-[#c5a880] shadow-xl shadow-[#c5a880]/10'
+                      : 'bg-white border-[#c5a880] shadow-xl shadow-[#c5a880]/15'
                     : isDark
-                    ? 'bg-[#101622] border-slate-800 hover:border-slate-700'
-                    : 'bg-white/80 border-slate-200 hover:border-slate-300 shadow-sm'
+                    ? 'bg-[#120f0d] border-[#c5a880]/20 hover:border-[#c5a880]/40'
+                    : 'bg-white/80 border-[#c5a880]/25 hover:border-[#c5a880]/40 shadow-sm'
                 }`}
               >
-                <div className="flex items-center gap-3 mb-4">
+                <div className="flex items-center gap-3.5 mb-4">
                   <div
                     className={`w-12 h-12 rounded-2xl flex items-center justify-center font-bold transition-transform ${
                       isSelected
-                        ? 'bg-lime-400 text-slate-950 scale-105'
+                        ? 'bg-gradient-to-r from-[#dfc299] to-[#c5a880] text-[#14100c] scale-105 shadow-md'
                         : isDark
-                        ? 'bg-slate-800 text-lime-400'
-                        : 'bg-slate-100 text-lime-700'
+                        ? 'bg-[#221c17] text-[#dfc299]'
+                        : 'bg-stone-100 text-[#8c6d42]'
                     }`}
                   >
-                    <Icon className="w-6 h-6" />
+                    <Icon className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className={`text-base font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                    <h3
+                      className={`text-base font-classic-serif font-semibold ${
+                        isDark ? 'text-white' : 'text-stone-900'
+                      }`}
+                    >
                       {feat.title}
                     </h3>
-                    <p className="text-xs text-slate-400">{feat.short}</p>
+                    <p className="text-[11px] text-stone-400">{feat.short}</p>
                   </div>
                 </div>
 
-                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+                <p className="text-xs sm:text-sm text-stone-400 leading-relaxed mb-4 font-light">
                   {feat.detail}
                 </p>
 
-                <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center gap-2 text-xs font-semibold text-lime-600 dark:text-lime-400">
-                  <CheckCircle className="w-3.5 h-3.5 shrink-0" />
+                <div className="pt-3 border-t border-stone-200/20 dark:border-stone-800/80 flex items-center gap-2 text-xs font-semibold text-[#dfc299]">
+                  <CheckCircle className="w-3.5 h-3.5 shrink-0 text-[#c5a880]" />
                   <span>{feat.benefit}</span>
                 </div>
               </div>
@@ -235,36 +247,36 @@ export const WorkflowPreviewSection: React.FC = () => {
 
   return (
     <section
-      className={`py-20 border-t transition-colors duration-300 ${
-        isDark ? 'bg-[#0d121c] border-slate-800' : 'bg-slate-50 border-slate-200'
+      className={`py-24 border-t transition-colors duration-300 ${
+        isDark ? 'bg-[#0f0d0b] border-[#c5a880]/20' : 'bg-[#f7f2ea] border-[#c5a880]/25'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
           className={`rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden border ${
             isDark
-              ? 'bg-gradient-to-br from-[#131a26] to-[#0f1520] border-slate-700'
-              : 'bg-white border-slate-200 shadow-slate-200'
+              ? 'bg-[#151210] border-[#c5a880]/30 shadow-black/80'
+              : 'bg-white border-[#c5a880]/35 shadow-stone-200/60'
           }`}
         >
           <div className="max-w-3xl mb-8">
-            <span className="text-xs font-bold uppercase tracking-wider text-lime-600 dark:text-lime-400 px-3 py-1 rounded-full bg-lime-500/10 border border-lime-500/20">
-              Interactive Automation Engine
+            <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#c5a880] px-4 py-1.5 rounded-full bg-[#c5a880]/10 border border-[#c5a880]/30 inline-block">
+              SYNCHRONIZED AUTOMATION ENGINE
             </span>
             <h3
-              className={`text-2xl sm:text-3xl font-extrabold mt-3 ${
-                isDark ? 'text-white' : 'text-slate-900'
+              className={`text-2xl sm:text-3xl md:text-4xl font-classic-serif font-normal mt-3 leading-tight ${
+                isDark ? 'text-[#f5f0eb]' : 'text-[#1c1917]'
               }`}
             >
-              Observe how the automated sequence executes
+              Observe How the Automated Sequence Executes
             </h3>
-            <p className="text-slate-500 dark:text-slate-300 text-sm mt-2">
+            <p className="text-stone-400 text-xs sm:text-sm mt-2 font-light max-w-xl">
               Every booking triggers synchronized deterministic state transitions across calendars, customer profiles, reminder queues, and notification centers.
             </p>
           </div>
 
-          {/* Workflow Step Diagram */}
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-3 pt-4">
+          {/* Workflow Step Diagram with Classic Bronze Styling */}
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-3.5 pt-2">
             {[
               { title: '1. Booking Received', status: 'Triggered' },
               { title: '2. Validate Slot', status: 'Conflict Check' },
@@ -277,31 +289,35 @@ export const WorkflowPreviewSection: React.FC = () => {
                 key={i}
                 className={`p-4 rounded-2xl border flex flex-col justify-between space-y-3 ${
                   isDark
-                    ? 'bg-[#0a0f18] border-slate-800 shadow-inner'
-                    : 'bg-slate-50 border-slate-200 shadow-sm'
+                    ? 'bg-[#0e0c0a] border-[#c5a880]/15 shadow-inner'
+                    : 'bg-[#faf7f2] border-[#c5a880]/20 shadow-sm'
                 }`}
               >
-                <div className="w-6 h-6 rounded-full bg-lime-400/20 text-lime-600 dark:text-lime-400 text-xs font-bold flex items-center justify-center">
+                <div className="w-7 h-7 rounded-full bg-[#c5a880]/20 text-[#dfc299] text-xs font-bold flex items-center justify-center border border-[#c5a880]/30">
                   {i + 1}
                 </div>
                 <div>
-                  <p className={`text-xs font-bold leading-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                  <p
+                    className={`text-xs font-bold leading-tight ${
+                      isDark ? 'text-white' : 'text-stone-900'
+                    }`}
+                  >
                     {st.title}
                   </p>
-                  <p className="text-[10px] text-slate-400 mt-1">{st.status}</p>
+                  <p className="text-[10px] text-stone-400 mt-1 font-mono">{st.status}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-              <ShieldCheck className="w-4 h-4 text-lime-500" />
+          <div className="mt-8 pt-6 border-t border-stone-200/20 dark:border-stone-800/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-2 text-xs text-stone-400">
+              <ShieldCheck className="w-4 h-4 text-[#dfc299]" />
               <span>Simulated local event bus with zero third-party leakage.</span>
             </div>
             <Link
               to="/appointment-automation/dashboard/automation"
-              className="px-5 py-2.5 rounded-xl font-bold bg-lime-400 hover:bg-lime-300 text-slate-950 text-xs shadow-md transition-all flex items-center gap-2"
+              className="px-6 py-2.5 rounded-full font-bold uppercase tracking-wider text-xs neu-gold-btn shadow-md transition-all flex items-center gap-2"
             >
               <span>Inspect Workflow in Dashboard</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -337,24 +353,28 @@ export const FAQSection: React.FC = () => {
     },
     {
       q: 'Does it support dark and light hybrid modes?',
-      a: 'Yes. Both themes are fully supported with tactile Neumorphic elevation, high-contrast readable surfaces, and customizable visual tokens.',
+      a: 'Yes. Both themes are fully supported with tactile classic luxury elevation, high-contrast readable surfaces, and customizable visual tokens.',
     },
   ]
 
   return (
     <section
       id="faq"
-      className={`py-20 border-t transition-colors duration-300 ${
-        isDark ? 'bg-[#090d14] border-slate-800' : 'bg-slate-100/60 border-slate-200'
+      className={`py-24 border-t transition-colors duration-300 ${
+        isDark ? 'bg-[#0a0908] border-[#c5a880]/20' : 'bg-[#faf7f2] border-[#c5a880]/25'
       }`}
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <span className="text-xs font-bold uppercase tracking-wider text-lime-600 dark:text-lime-400 px-3 py-1 rounded-full bg-lime-500/10 border border-lime-500/20">
-            Frequently Asked Questions
+          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#c5a880] px-4 py-1.5 rounded-full bg-[#c5a880]/10 border border-[#c5a880]/30 inline-block">
+            FREQUENT INQUIRIES
           </span>
-          <h2 className={`text-3xl font-extrabold mt-3 ${isDark ? 'text-white' : 'text-slate-900'}`}>
-            Everything you need to know
+          <h2
+            className={`text-3xl sm:text-4xl font-classic-serif font-normal mt-3 ${
+              isDark ? 'text-[#f5f0eb]' : 'text-[#1c1917]'
+            }`}
+          >
+            Everything You Need to Know
           </h2>
         </div>
 
@@ -365,24 +385,26 @@ export const FAQSection: React.FC = () => {
               <div
                 key={i}
                 className={`border rounded-2xl overflow-hidden transition-colors ${
-                  isDark ? 'bg-[#121824] border-slate-800' : 'bg-white border-slate-200 shadow-sm'
+                  isDark
+                    ? 'bg-[#151210] border-[#c5a880]/20'
+                    : 'bg-white border-[#c5a880]/30 shadow-sm'
                 }`}
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className={`w-full text-left p-5 flex items-center justify-between font-semibold text-sm sm:text-base ${
-                    isDark ? 'text-white' : 'text-slate-900'
+                  className={`w-full text-left p-5 flex items-center justify-between font-medium text-sm sm:text-base ${
+                    isDark ? 'text-white' : 'text-stone-900'
                   }`}
                 >
-                  <span>{faq.q}</span>
+                  <span className="font-classic-serif text-lg">{faq.q}</span>
                   <ChevronDown
-                    className={`w-4 h-4 text-lime-500 transition-transform ${
+                    className={`w-4 h-4 text-[#dfc299] transition-transform ${
                       isOpen ? 'rotate-180' : ''
                     }`}
                   />
                 </button>
                 {isOpen && (
-                  <div className="px-5 pb-5 text-sm text-slate-500 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800/60 pt-3">
+                  <div className="px-5 pb-5 text-sm text-stone-400 leading-relaxed border-t border-stone-200/20 dark:border-stone-800/80 pt-3 font-light">
                     {faq.a}
                   </div>
                 )}
@@ -401,24 +423,24 @@ export const LandingFooter: React.FC = () => {
 
   return (
     <footer
-      className={`border-t py-12 text-xs transition-colors duration-300 ${
-        isDark ? 'bg-[#070a10] border-slate-800 text-slate-400' : 'bg-white border-slate-200 text-slate-500'
+      className={`border-t py-14 text-xs transition-colors duration-300 ${
+        isDark ? 'bg-[#080706] border-[#c5a880]/20 text-stone-400' : 'bg-white border-[#c5a880]/25 text-stone-500'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-200 dark:border-slate-800">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-[#c5a880]/15">
           <BrandLogo />
-          <div className="flex flex-wrap items-center gap-6 text-xs font-semibold">
-            <Link to="/appointment-automation" className="hover:text-lime-500">
+          <div className="flex flex-wrap items-center gap-7 text-xs font-semibold tracking-wider uppercase">
+            <Link to="/appointment-automation" className="hover:text-[#dfc299] transition-colors">
               Home
             </Link>
-            <Link to="/appointment-automation/demo" className="hover:text-lime-500">
+            <Link to="/appointment-automation/demo" className="hover:text-[#dfc299] transition-colors">
               Booking Demo
             </Link>
-            <Link to="/appointment-automation/dashboard" className="hover:text-lime-500">
+            <Link to="/appointment-automation/dashboard" className="hover:text-[#dfc299] transition-colors">
               Business Dashboard
             </Link>
-            <Link to="/appointment-automation/dashboard/automation" className="hover:text-lime-500">
+            <Link to="/appointment-automation/dashboard/automation" className="hover:text-[#dfc299] transition-colors">
               Automation Engine
             </Link>
           </div>
@@ -426,20 +448,22 @@ export const LandingFooter: React.FC = () => {
 
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px]">
           <p>
-            © {new Date().getFullYear()} Bookly. Built by{' '}
+            © {new Date().getFullYear()} Bookly. Built under{' '}
             <a
               href="https://dawnexus.in"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-lime-600 dark:text-lime-400 font-bold hover:underline"
+              className="text-[#dfc299] font-bold hover:underline"
             >
               Dawnexus
             </a>{' '}
-            showcase ecosystem. All rights reserved.
+            product showcase ecosystem. All rights reserved.
           </p>
           <p
-            className={`px-3 py-1.5 rounded-lg border ${
-              isDark ? 'bg-slate-900 border-slate-800 text-slate-400' : 'bg-slate-100 border-slate-200 text-slate-600'
+            className={`px-3 py-1.5 rounded-full border ${
+              isDark
+                ? 'bg-[#14110f] border-[#c5a880]/25 text-stone-400'
+                : 'bg-stone-50 border-[#c5a880]/30 text-stone-600'
             }`}
           >
             Interactive front-end prototype. All simulated bookings and communications are local.

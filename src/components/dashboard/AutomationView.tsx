@@ -52,7 +52,7 @@ export const AutomationView: React.FC = () => {
       desc: 'Slot verified against staff shifts, break times, and 10m sanitization buffer.',
       status: 'Enforced',
       icon: CheckCircle2,
-      color: 'bg-lime-500 text-slate-950',
+      color: 'bg-gradient-to-br from-[#dfc299] to-[#c5a880] text-[#0c0a09]',
     },
     {
       num: 3,
@@ -93,7 +93,7 @@ export const AutomationView: React.FC = () => {
       {/* Top Banner */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2">
         <div>
-          <h1 className="text-2xl font-extrabold tracking-tight">Automation Engine</h1>
+          <h1 className="text-3xl font-classic-serif font-normal tracking-tight">Automation Engine</h1>
           <p className="text-xs sm:text-sm opacity-60">
             Local event-driven state orchestrator powering notifications, calendar buffers, and waitlist auto-fill.
           </p>
@@ -102,17 +102,17 @@ export const AutomationView: React.FC = () => {
 
       {/* Visual Interactive Workflow (Matching Panel 7/8 in screenshot) */}
       <div
-        className={`rounded-3xl p-6 sm:p-8 space-y-6 transition-all ${
-          isDark ? 'neu-raised' : 'neu-raised'
+        className={`rounded-3xl p-6 sm:p-8 space-y-6 transition-all border ${
+          isDark ? 'neu-raised border-[#c5a880]/20' : 'neu-raised border-[#c5a880]/30'
         }`}
       >
-        <div className="flex items-center justify-between pb-4 border-b border-slate-200/40 dark:border-slate-800">
+        <div className="flex items-center justify-between pb-4 border-b border-stone-200/40 dark:border-stone-800">
           <div className="flex items-center gap-2">
-            <Workflow className="w-5 h-5 text-lime-500" />
+            <Workflow className="w-5 h-5 text-[#dfc299]" />
             <h2 className="text-base font-bold">Active Automation Pipeline</h2>
           </div>
-          <span className="text-xs font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950/60 px-3 py-1 rounded-full flex items-center gap-1.5 border border-emerald-400/30">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="text-xs font-bold text-[#dfc299] bg-[#c5a880]/15 px-3 py-1 rounded-full flex items-center gap-1.5 border border-[#c5a880]/30">
+            <span className="w-2 h-2 rounded-full bg-[#dfc299] animate-pulse" />
             Deterministic Local Engine
           </span>
         </div>
@@ -126,8 +126,8 @@ export const AutomationView: React.FC = () => {
                 key={step.num}
                 className={`p-5 rounded-2xl border transition-all space-y-3 group ${
                   isDark
-                    ? 'bg-[#0f1624] border-slate-800 hover:border-lime-400/50'
-                    : 'bg-slate-50 border-slate-200 hover:border-lime-500/50 shadow-sm'
+                    ? 'bg-[#151210] border-stone-800 hover:border-[#c5a880]/50'
+                    : 'bg-stone-50 border-stone-200 hover:border-[#c5a880]/50 shadow-sm'
                 }`}
               >
                 <div className="flex items-center justify-between">
@@ -232,7 +232,7 @@ export const AutomationView: React.FC = () => {
                     </button>
                     <button
                       onClick={() => acceptWaitlistOffer(wl.id)}
-                      className="px-3.5 py-1.5 rounded-lg bg-lime-400 hover:bg-lime-300 text-slate-950 text-xs font-bold shadow-sm"
+                      className="px-3.5 py-1.5 rounded-full neu-gold-btn text-xs font-bold shadow-sm uppercase tracking-wider"
                     >
                       Accept & Book
                     </button>
@@ -246,11 +246,11 @@ export const AutomationView: React.FC = () => {
 
       {/* Chronological Real-time Activity Feed */}
       <div
-        className={`rounded-3xl p-6 sm:p-8 space-y-5 transition-all ${
-          isDark ? 'neu-raised' : 'neu-raised'
+        className={`rounded-3xl p-6 sm:p-8 space-y-5 transition-all border ${
+          isDark ? 'neu-raised border-[#c5a880]/20' : 'neu-raised border-[#c5a880]/30'
         }`}
       >
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200/40 dark:border-slate-800">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-stone-200/40 dark:border-stone-800">
           <div>
             <h2 className="text-base font-bold">Recent Automation Activity Feed</h2>
             <p className="text-xs opacity-60">Live chronological stream of simulated business events</p>
@@ -262,12 +262,12 @@ export const AutomationView: React.FC = () => {
               <button
                 key={f}
                 onClick={() => setSelectedTypeFilter(f)}
-                className={`px-3 py-1 rounded-lg text-xs font-bold capitalize transition-all ${
+                className={`px-3 py-1 rounded-full text-xs font-bold capitalize transition-all ${
                   selectedTypeFilter === f
-                    ? 'bg-lime-400 text-slate-950 shadow-sm'
+                    ? 'neu-gold-btn shadow-sm'
                     : isDark
-                    ? 'bg-slate-800 text-slate-400 hover:bg-slate-700'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    ? 'bg-stone-800 text-stone-400 hover:bg-stone-700'
+                    : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
                 }`}
               >
                 {f}
@@ -286,15 +286,15 @@ export const AutomationView: React.FC = () => {
                 key={evt.id}
                 className={`p-4 rounded-2xl border transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs ${
                   isDark
-                    ? 'bg-[#0f1624] border-slate-800 hover:bg-slate-850'
-                    : 'bg-slate-50 border-slate-200 hover:bg-slate-100/70'
+                    ? 'bg-[#151210] border-stone-800 hover:bg-stone-850'
+                    : 'bg-stone-50 border-stone-200 hover:bg-stone-100/70'
                 }`}
               >
               <div className="flex items-start gap-3">
                 <div
                   className={`w-8 h-8 rounded-xl flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 ${
                     evt.type === 'booked'
-                      ? 'bg-lime-400/20 text-lime-500'
+                      ? 'bg-[#c5a880]/20 text-[#dfc299]'
                       : evt.type === 'confirmed'
                       ? 'bg-blue-400/20 text-blue-500'
                       : evt.type === 'cancelled'

@@ -30,13 +30,13 @@ export const NotificationsView: React.FC = () => {
 
         <button
           onClick={markAllNotificationsRead}
-          className={`px-4 py-2 rounded-xl text-xs font-bold border shadow-sm flex items-center gap-1.5 self-start sm:self-auto ${
+          className={`px-4 py-2 rounded-full text-xs font-bold border shadow-sm flex items-center gap-1.5 self-start sm:self-auto ${
             isDark
-              ? 'bg-slate-800 border-slate-700 text-slate-200 hover:bg-slate-700'
-              : 'bg-white border-slate-300 text-slate-800 hover:bg-slate-50'
+              ? 'bg-stone-800 border-stone-700 text-stone-200 hover:bg-stone-700'
+              : 'bg-white border-stone-300 text-stone-800 hover:bg-stone-50'
           }`}
         >
-          <CheckCheck className="w-3.5 h-3.5 text-lime-500" />
+          <CheckCheck className="w-3.5 h-3.5 text-[#dfc299]" />
           <span>Mark All Read</span>
         </button>
       </div>
@@ -45,22 +45,22 @@ export const NotificationsView: React.FC = () => {
       <div className="grid lg:grid-cols-12 gap-6 items-start">
         {/* Left Column: List */}
         <div
-          className={`lg:col-span-7 rounded-3xl p-6 space-y-4 transition-all ${
-            isDark ? 'neu-raised' : 'neu-raised'
+          className={`lg:col-span-7 rounded-3xl p-6 space-y-4 transition-all border ${
+            isDark ? 'neu-raised border-[#c5a880]/20' : 'neu-raised border-[#c5a880]/30'
           }`}
         >
           {/* Channel Filter Chips */}
-          <div className="flex items-center gap-2 pb-3 border-b border-slate-200/40 dark:border-slate-800">
+          <div className="flex items-center gap-2 pb-3 border-b border-stone-200/40 dark:border-stone-800">
             {['all', 'sms', 'email', 'system'].map((ch) => (
               <button
                 key={ch}
                 onClick={() => setSelectedChannel(ch)}
-                className={`px-3 py-1 rounded-xl text-xs font-bold uppercase transition-all ${
+                className={`px-3 py-1 rounded-full text-xs font-bold uppercase transition-all ${
                   selectedChannel === ch
-                    ? 'bg-lime-400 text-slate-950 font-black shadow-sm'
+                    ? 'neu-gold-btn shadow-sm'
                     : isDark
-                    ? 'bg-slate-800 text-slate-400 hover:bg-slate-700'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    ? 'bg-stone-800 text-stone-400 hover:bg-stone-700'
+                    : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
                 }`}
               >
                 {ch}
@@ -80,14 +80,14 @@ export const NotificationsView: React.FC = () => {
                   }}
                   className={`p-4 rounded-2xl border transition-all cursor-pointer ${
                     isSelected
-                      ? 'border-lime-400 bg-lime-400/10 ring-2 ring-lime-400/30'
+                      ? 'border-[#c5a880] bg-[#c5a880]/10 ring-2 ring-[#c5a880]/30'
                       : item.read
                       ? isDark
-                        ? 'bg-[#0f1624] border-slate-800/80 opacity-70'
-                        : 'bg-slate-50 border-slate-200/70 opacity-75'
+                        ? 'bg-[#151210] border-stone-800/80 opacity-70'
+                        : 'bg-stone-50 border-stone-200/70 opacity-75'
                       : isDark
-                      ? 'bg-[#151e2e] border-slate-700 shadow-md'
-                      : 'bg-white border-slate-300 shadow-sm'
+                      ? 'bg-[#191512] border-stone-700 shadow-md'
+                      : 'bg-white border-stone-300 shadow-sm'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1.5">
@@ -115,7 +115,7 @@ export const NotificationsView: React.FC = () => {
                         {item.timestamp}
                       </span>
                       {!item.read && (
-                        <span className="w-2 h-2 rounded-full bg-lime-400 animate-pulse" />
+                        <span className="w-2 h-2 rounded-full bg-[#dfc299] animate-pulse" />
                       )}
                     </div>
                   </div>
@@ -129,13 +129,13 @@ export const NotificationsView: React.FC = () => {
 
         {/* Right Column: Simulated Mobile SMS or Email Device Preview */}
         <div
-          className={`lg:col-span-5 rounded-3xl p-6 space-y-4 transition-all ${
-            isDark ? 'neu-raised' : 'neu-raised'
+          className={`lg:col-span-5 rounded-3xl p-6 space-y-4 transition-all border ${
+            isDark ? 'neu-raised border-[#c5a880]/20' : 'neu-raised border-[#c5a880]/30'
           }`}
         >
-          <div className="flex items-center justify-between pb-3 border-b border-slate-200/40 dark:border-slate-800">
+          <div className="flex items-center justify-between pb-3 border-b border-stone-200/40 dark:border-stone-800">
             <h3 className="text-sm font-bold">Live Delivery Simulation</h3>
-            <span className="text-[10px] font-bold uppercase bg-lime-400/20 text-lime-600 dark:text-lime-400 px-2.5 py-0.5 rounded-full border border-lime-400/30">
+            <span className="text-[10px] font-bold uppercase bg-[#c5a880]/20 text-[#dfc299] px-2.5 py-0.5 rounded-full border border-[#c5a880]/30">
               {activePreview?.channel === 'sms' ? 'SMS Message' : 'HTML Email'}
             </span>
           </div>
@@ -143,14 +143,14 @@ export const NotificationsView: React.FC = () => {
           {activePreview ? (
             <div
               className={`rounded-3xl p-5 shadow-2xl space-y-4 border ${
-                isDark ? 'bg-[#0f172a] text-white border-slate-800' : 'bg-slate-900 text-white border-slate-800'
+                isDark ? 'bg-[#151210] text-white border-stone-800' : 'bg-stone-900 text-white border-stone-800'
               }`}
             >
               {/* Simulated Phone Top Header */}
-              <div className="flex items-center justify-between border-b border-slate-800 pb-3 text-xs opacity-70">
+              <div className="flex items-center justify-between border-b border-stone-800 pb-3 text-xs opacity-70">
                 <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-lime-400" />
-                  <span className="font-bold text-slate-200">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#dfc299]" />
+                  <span className="font-bold text-stone-200">
                     {activePreview.channel === 'sms' ? 'Dawnexus Bookly (SMS)' : 'Bookly Notifications'}
                   </span>
                 </div>
@@ -160,10 +160,10 @@ export const NotificationsView: React.FC = () => {
               {/* Message Bubble Body */}
               {activePreview.channel === 'sms' ? (
                 <div className="space-y-3 py-4">
-                  <div className="bg-lime-400 text-slate-950 p-4 rounded-2xl rounded-tl-sm text-xs shadow-md font-semibold leading-relaxed">
+                  <div className="bg-gradient-to-br from-[#dfc299] to-[#c5a880] text-[#0c0a09] p-4 rounded-2xl rounded-tl-sm text-xs shadow-md font-semibold leading-relaxed">
                     <p className="font-black mb-1">Bookly Automated Alert</p>
                     <p>{activePreview.message}</p>
-                    <p className="text-[10px] text-slate-900 mt-2 font-mono">
+                    <p className="text-[10px] text-[#0c0a09] mt-2 font-mono">
                       Reply RESCHEDULE to move or CANCEL to decline.
                     </p>
                   </div>
@@ -172,12 +172,12 @@ export const NotificationsView: React.FC = () => {
                   </span>
                 </div>
               ) : (
-                <div className="bg-white text-slate-900 p-5 rounded-2xl text-xs space-y-3 shadow-lg">
-                  <div className="border-b border-slate-100 pb-2">
-                    <span className="text-[10px] font-bold text-lime-700 uppercase tracking-wider block">
+                <div className="bg-white text-stone-900 p-5 rounded-2xl text-xs space-y-3 shadow-lg">
+                  <div className="border-b border-stone-100 pb-2">
+                    <span className="text-[10px] font-bold text-[#8c6d42] uppercase tracking-wider block">
                       Automated Confirmation & Calendar Invite
                     </span>
-                    <h4 className="text-sm font-bold text-slate-900 mt-0.5">
+                    <h4 className="text-sm font-bold text-stone-900 mt-0.5">
                       {activePreview.title}
                     </h4>
                   </div>

@@ -147,8 +147,8 @@ export const CalendarView: React.FC = () => {
               className={`px-3 py-1 rounded-lg transition-all ${
                 selectedStaffFilter === 'all'
                   ? isDark
-                    ? 'bg-slate-800 text-lime-400 shadow-sm font-bold'
-                    : 'bg-white text-slate-950 shadow-sm font-bold'
+                    ? 'bg-[#1e1915] text-[#dfc299] shadow-sm font-bold border border-[#c5a880]/30'
+                    : 'bg-white text-stone-950 shadow-sm font-bold border border-[#c5a880]/40'
                   : 'opacity-70 hover:opacity-100'
               }`}
             >
@@ -161,8 +161,8 @@ export const CalendarView: React.FC = () => {
                 className={`px-3 py-1 rounded-lg transition-all hidden sm:inline ${
                   selectedStaffFilter === st.id
                     ? isDark
-                      ? 'bg-slate-800 text-lime-400 shadow-sm font-bold'
-                      : 'bg-white text-slate-950 shadow-sm font-bold'
+                      ? 'bg-[#1e1915] text-[#dfc299] shadow-sm font-bold border border-[#c5a880]/30'
+                      : 'bg-white text-stone-950 shadow-sm font-bold border border-[#c5a880]/40'
                     : 'opacity-70 hover:opacity-100'
                 }`}
               >
@@ -183,7 +183,7 @@ export const CalendarView: React.FC = () => {
                 onClick={() => setViewMode(mode)}
                 className={`px-3 py-1 rounded-lg capitalize transition-all ${
                   viewMode === mode
-                    ? 'bg-lime-400 text-slate-950 font-black shadow-sm'
+                    ? 'neu-gold-btn shadow-sm'
                     : 'opacity-70 hover:opacity-100'
                 }`}
               >
@@ -217,28 +217,28 @@ export const CalendarView: React.FC = () => {
       {/* Main Calendar Matrix (Week View) */}
       <div
         className={`rounded-3xl border overflow-hidden transition-all ${
-          isDark ? 'neu-raised' : 'neu-raised'
+          isDark ? 'neu-raised border-[#c5a880]/20' : 'neu-raised border-[#c5a880]/30'
         }`}
       >
         {/* Days Header */}
         <div
           className={`grid grid-cols-8 border-b text-center text-xs font-bold ${
             isDark
-              ? 'border-slate-800 bg-[#0e1420] text-slate-400'
-              : 'border-slate-200 bg-slate-50 text-slate-600'
+              ? 'border-stone-800 bg-[#14110f] text-stone-400'
+              : 'border-stone-200 bg-[#f5efe6] text-stone-700'
           }`}
         >
-          <div className="py-3 px-2 border-r border-slate-200/40 dark:border-slate-800 opacity-60">
+          <div className="py-3 px-2 border-r border-stone-200/40 dark:border-stone-800 opacity-60">
             EST
           </div>
           {daysOfWeek.map((d) => (
             <div
               key={d.date}
-              className={`py-3 px-2 border-r border-slate-200/40 dark:border-slate-800 ${
+              className={`py-3 px-2 border-r border-stone-200/40 dark:border-stone-800 ${
                 d.isToday
                   ? isDark
-                    ? 'bg-lime-950/20 text-lime-300'
-                    : 'bg-lime-50 text-lime-900'
+                    ? 'bg-[#c5a880]/15 text-[#dfc299]'
+                    : 'bg-[#c5a880]/20 text-[#8c6d42]'
                   : ''
               }`}
             >
@@ -248,7 +248,7 @@ export const CalendarView: React.FC = () => {
               <span
                 className={`inline-block mt-0.5 text-sm ${
                   d.isToday
-                    ? 'w-6 h-6 rounded-full bg-lime-400 text-slate-950 font-black leading-6 shadow-sm shadow-lime-500/30'
+                    ? 'w-6 h-6 rounded-full bg-gradient-to-r from-[#dfc299] to-[#c5a880] text-[#0c0a09] font-black leading-6 shadow-sm shadow-[#c5a880]/30'
                     : 'font-extrabold'
                 }`}
               >
@@ -286,10 +286,10 @@ export const CalendarView: React.FC = () => {
                         setQuickBookSlot({ date: day.date, time: timeStr })
                       }
                     }}
-                    className={`p-1.5 border-r border-slate-200/30 dark:border-slate-800/60 relative group transition-colors cursor-pointer ${
+                    className={`p-1.5 border-r border-stone-200/30 dark:border-stone-800/60 relative group transition-colors cursor-pointer ${
                       day.isToday
-                        ? isDark ? 'bg-lime-950/10' : 'bg-lime-50/25'
-                        : isDark ? 'hover:bg-slate-800/30' : 'hover:bg-slate-50'
+                        ? isDark ? 'bg-[#c5a880]/5' : 'bg-[#c5a880]/10'
+                        : isDark ? 'hover:bg-stone-800/30' : 'hover:bg-stone-50'
                     }`}
                   >
                     {matchingApps.map((app) => (
@@ -306,7 +306,7 @@ export const CalendarView: React.FC = () => {
                             ? 'bg-amber-500/20 border-amber-500/40 text-amber-800 dark:text-amber-300'
                             : app.serviceName.includes('Blow')
                             ? 'bg-cyan-500/20 border-cyan-500/40 text-cyan-800 dark:text-cyan-300'
-                            : 'bg-lime-400/20 border-lime-400/50 text-lime-900 dark:text-lime-300'
+                            : 'bg-[#c5a880]/20 border-[#c5a880]/40 text-[#f5f0eb] dark:text-[#dfc299]'
                         }`}
                       >
                         <p className="font-extrabold text-xs leading-tight truncate">
@@ -333,16 +333,16 @@ export const CalendarView: React.FC = () => {
 
       {/* Appointment Detail & Actions Drawer/Modal */}
       {selectedAppointment && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 animate-fade-in">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4 animate-fade-in">
           <div
             className={`rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl border space-y-5 ${
-              isDark ? 'bg-[#151d2a] border-slate-700 text-white' : 'bg-white border-slate-200 text-slate-900'
+              isDark ? 'bg-[#161311] border-[#c5a880]/30 text-[#faf7f2]' : 'bg-[#faf7f2] border-[#c5a880]/40 text-[#1a1614]'
             }`}
           >
-            <div className="flex items-center justify-between pb-3 border-b border-slate-200/40 dark:border-slate-800">
+            <div className="flex items-center justify-between pb-3 border-b border-stone-200/40 dark:border-stone-800">
               <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-lime-400" />
-                <h3 className="text-lg font-bold">Appointment Details</h3>
+                <span className="w-3 h-3 rounded-full bg-[#dfc299]" />
+                <h3 className="text-xl font-classic-serif font-normal">Appointment Folio</h3>
               </div>
               <button
                 onClick={() => {
@@ -359,12 +359,12 @@ export const CalendarView: React.FC = () => {
               <div className="space-y-4 text-xs">
                 <div
                   className={`p-4 rounded-2xl border space-y-2 ${
-                    isDark ? 'bg-[#0e1420] border-slate-800' : 'bg-slate-50 border-slate-200'
+                    isDark ? 'bg-[#151210] border-[#c5a880]/20' : 'bg-[#f5efe6] border-[#c5a880]/30'
                   }`}
                 >
                   <div className="flex justify-between">
                     <span className="opacity-60">Booking Reference:</span>
-                    <strong className="font-mono text-lime-600 dark:text-lime-400">
+                    <strong className="font-mono text-[#dfc299]">
                       {selectedAppointment.bookingReference}
                     </strong>
                   </div>
@@ -399,13 +399,13 @@ export const CalendarView: React.FC = () => {
                 <div className="flex items-center justify-end gap-3 pt-3">
                   <button
                     onClick={handleConfirmCancel}
-                    className="px-4 py-2 rounded-xl border border-rose-500/40 text-rose-500 font-bold hover:bg-rose-500/10"
+                    className="px-4 py-2 rounded-full border border-rose-500/40 text-rose-500 font-bold hover:bg-rose-500/10"
                   >
                     Cancel Booking
                   </button>
                   <button
                     onClick={() => setIsRescheduling(true)}
-                    className="px-5 py-2 rounded-xl bg-lime-400 font-extrabold text-slate-950 shadow-md shadow-lime-500/20"
+                    className="px-5 py-2 rounded-full neu-gold-btn font-bold text-xs uppercase tracking-wider shadow-md"
                   >
                     Reschedule
                   </button>
@@ -421,7 +421,7 @@ export const CalendarView: React.FC = () => {
                     value={rescheduleDate}
                     onChange={(e) => setRescheduleDate(e.target.value)}
                     className={`w-full p-2.5 rounded-xl border font-semibold ${
-                      isDark ? 'bg-[#0f1724] border-slate-700 text-white' : 'bg-slate-50 border-slate-300'
+                      isDark ? 'bg-[#100e0c] border-[#c5a880]/30 text-white' : 'bg-stone-50 border-stone-300'
                     }`}
                   />
                 </div>
@@ -431,7 +431,7 @@ export const CalendarView: React.FC = () => {
                     value={rescheduleTime}
                     onChange={(e) => setRescheduleTime(e.target.value)}
                     className={`w-full p-2.5 rounded-xl border font-semibold ${
-                      isDark ? 'bg-[#0f1724] border-slate-700 text-white' : 'bg-slate-50 border-slate-300'
+                      isDark ? 'bg-[#100e0c] border-[#c5a880]/30 text-white' : 'bg-stone-50 border-stone-300'
                     }`}
                   >
                     <option value="09:00 AM">09:00 AM</option>
@@ -444,15 +444,15 @@ export const CalendarView: React.FC = () => {
                 <div className="flex items-center justify-end gap-3 pt-2">
                   <button
                     onClick={() => setIsRescheduling(false)}
-                    className={`px-4 py-2 rounded-xl border ${
-                      isDark ? 'border-slate-700 text-slate-400' : 'border-slate-300 text-slate-600'
+                    className={`px-4 py-2 rounded-full border ${
+                      isDark ? 'border-stone-700 text-stone-400' : 'border-stone-300 text-stone-600'
                     }`}
                   >
                     Back
                   </button>
                   <button
                     onClick={handleConfirmReschedule}
-                    className="px-5 py-2 rounded-xl bg-lime-400 font-bold text-slate-950 shadow-md"
+                    className="px-5 py-2 rounded-full neu-gold-btn font-bold text-xs uppercase tracking-wider shadow-md"
                   >
                     Confirm Reschedule
                   </button>
@@ -465,15 +465,15 @@ export const CalendarView: React.FC = () => {
 
       {/* Quick Booking Modal on Empty Calendar Slot */}
       {quickBookSlot && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 animate-fade-in">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4 animate-fade-in">
           <form
             onSubmit={handleQuickBook}
             className={`rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border space-y-4 ${
-              isDark ? 'bg-[#151d2a] border-slate-700 text-white' : 'bg-white border-slate-200 text-slate-900'
+              isDark ? 'bg-[#161311] border-[#c5a880]/30 text-[#faf7f2]' : 'bg-[#faf7f2] border-[#c5a880]/40 text-[#1a1614]'
             }`}
           >
-            <div className="flex items-center justify-between pb-3 border-b border-slate-200/40 dark:border-slate-800">
-              <h3 className="text-lg font-bold">Create Booking on Calendar</h3>
+            <div className="flex items-center justify-between pb-3 border-b border-stone-200/40 dark:border-stone-800">
+              <h3 className="text-xl font-classic-serif font-normal">Create Booking on Calendar</h3>
               <button
                 type="button"
                 onClick={() => setQuickBookSlot(null)}
@@ -496,7 +496,7 @@ export const CalendarView: React.FC = () => {
                   value={quickCustomerName}
                   onChange={(e) => setQuickCustomerName(e.target.value)}
                   className={`w-full p-2.5 rounded-xl border ${
-                    isDark ? 'bg-[#0f1724] border-slate-700 text-white' : 'bg-slate-50 border-slate-300'
+                    isDark ? 'bg-[#100e0c] border-[#c5a880]/30 text-white' : 'bg-[#fbf9f5] border-stone-300'
                   }`}
                 />
               </div>
@@ -509,7 +509,7 @@ export const CalendarView: React.FC = () => {
                   value={quickCustomerEmail}
                   onChange={(e) => setQuickCustomerEmail(e.target.value)}
                   className={`w-full p-2.5 rounded-xl border ${
-                    isDark ? 'bg-[#0f1724] border-slate-700 text-white' : 'bg-slate-50 border-slate-300'
+                    isDark ? 'bg-[#100e0c] border-[#c5a880]/30 text-white' : 'bg-[#fbf9f5] border-stone-300'
                   }`}
                 />
               </div>
@@ -522,7 +522,7 @@ export const CalendarView: React.FC = () => {
                   value={quickCustomerPhone}
                   onChange={(e) => setQuickCustomerPhone(e.target.value)}
                   className={`w-full p-2.5 rounded-xl border ${
-                    isDark ? 'bg-[#0f1724] border-slate-700 text-white' : 'bg-slate-50 border-slate-300'
+                    isDark ? 'bg-[#100e0c] border-[#c5a880]/30 text-white' : 'bg-[#fbf9f5] border-stone-300'
                   }`}
                 />
               </div>
@@ -533,7 +533,7 @@ export const CalendarView: React.FC = () => {
                   value={quickServiceId}
                   onChange={(e) => setQuickServiceId(e.target.value)}
                   className={`w-full p-2.5 rounded-xl border ${
-                    isDark ? 'bg-[#0f1724] border-slate-700 text-white' : 'bg-slate-50 border-slate-300'
+                    isDark ? 'bg-[#100e0c] border-[#c5a880]/30 text-white' : 'bg-[#fbf9f5] border-stone-300'
                   }`}
                 >
                   {currentIndustry.services.map((s) => (
@@ -545,12 +545,12 @@ export const CalendarView: React.FC = () => {
               </div>
 
               <div>
-                <label className="block font-bold opacity-80 mb-1">Staff Member</label>
+                <label className="block font-bold opacity-80 mb-1">Specialist</label>
                 <select
                   value={quickStaffId}
                   onChange={(e) => setQuickStaffId(e.target.value)}
                   className={`w-full p-2.5 rounded-xl border ${
-                    isDark ? 'bg-[#0f1724] border-slate-700 text-white' : 'bg-slate-50 border-slate-300'
+                    isDark ? 'bg-[#100e0c] border-[#c5a880]/30 text-white' : 'bg-[#fbf9f5] border-stone-300'
                   }`}
                 >
                   {currentIndustry.staff.map((st) => (
@@ -562,19 +562,19 @@ export const CalendarView: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-200/40 dark:border-slate-800">
+            <div className="flex items-center justify-end gap-3 pt-3 border-t border-stone-200/40 dark:border-stone-800">
               <button
                 type="button"
                 onClick={() => setQuickBookSlot(null)}
-                className={`px-4 py-2 rounded-xl text-xs font-semibold border ${
-                  isDark ? 'border-slate-700 text-slate-400' : 'border-slate-300 text-slate-600'
+                className={`px-4 py-2 rounded-full text-xs font-semibold border ${
+                  isDark ? 'border-stone-700 text-stone-400' : 'border-stone-300 text-stone-600'
                 }`}
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="px-5 py-2 rounded-xl text-xs font-bold bg-lime-400 hover:bg-lime-300 text-slate-950 shadow-md"
+                className="px-5 py-2 rounded-full text-xs font-bold neu-gold-btn uppercase tracking-wider shadow-md"
               >
                 Save Appointment
               </button>

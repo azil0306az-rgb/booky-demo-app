@@ -38,7 +38,7 @@ export const DashboardLayout: React.FC = () => {
   return (
     <div
       className={`min-h-screen flex transition-colors duration-300 ${
-        isDark ? 'bg-[#0b0f17] text-white' : 'bg-[#edf2f7] text-slate-900'
+        isDark ? 'bg-[#0c0a09] text-[#f7f4ee]' : 'bg-[#faf7f2] text-stone-900'
       }`}
     >
       {/* Desktop Sidebar */}

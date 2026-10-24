@@ -16,8 +16,8 @@ export const LandingPage: React.FC = () => {
 
   return (
     <div
-      className={`min-h-screen transition-colors duration-300 selection:bg-lime-400 selection:text-slate-950 ${
-        isDark ? 'bg-[#0b0f17] text-white' : 'bg-[#edf2f7] text-slate-900'
+      className={`min-h-screen transition-colors duration-300 selection:bg-[#c5a880] selection:text-[#0c0a09] ${
+        isDark ? 'bg-[#0c0a09] text-[#faf7f2]' : 'bg-[#faf7f2] text-[#1a1614]'
       }`}
     >
       <Navbar />

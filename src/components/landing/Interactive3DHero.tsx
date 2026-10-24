@@ -1,29 +1,28 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import {
   Calendar as CalendarIcon,
-  Check,
   Clock,
-  Star,
-  Bell,
-  Sparkles,
   ArrowRight,
-  User,
+  ChevronLeft,
+  ChevronRight,
+  Sparkles,
+  Minus,
+  Plus,
   ShieldCheck,
 } from 'lucide-react'
 import { useApp } from '../../context/AppContext'
 
 export const Interactive3DHero: React.FC = () => {
-  const { theme, currentIndustry } = useApp()
+  const { theme } = useApp()
   const isDark = theme === 'dark'
 
   const containerRef = useRef<HTMLDivElement>(null)
-  const [rotate, setRotate] = useState({ x: 8, y: -12 })
-  const [activeSlot, setActiveSlot] = useState<string>('10:30 AM')
-  const [isHovered, setIsHovered] = useState(false)
-  const [badgeHover, setBadgeHover] = useState(false)
-
-  const featuredService = currentIndustry.services[0]
-  const featuredStaff = currentIndustry.staff[0]
+  const [rotate, setRotate] = useState({ x: 4, y: 0 })
+  const [activeSlide, setActiveSlide] = useState<number>(1) // 0: Left (Dream Bookings), 1: Center (Hospitality / Main), 2: Right (Welcome / Arch)
+  const [guestCount, setGuestCount] = useState<number>(1)
+  const [selectedDateRange, setSelectedDateRange] = useState<string>('Mar 12 - Mar 15')
+  const [selectedTimeSlot, setSelectedTimeSlot] = useState<string>('10:30 AM')
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return
@@ -31,256 +30,418 @@ export const Interactive3DHero: React.FC = () => {
     const x = e.clientX - rect.left - rect.width / 2
     const y = e.clientY - rect.top - rect.height / 2
 
-    // Smooth tilt angles
-    const rotateY = (x / (rect.width / 2)) * 14
-    const rotateX = -(y / (rect.height / 2)) * 14
+    // Restrained, elegant 3D tilt
+    const rotateY = (x / (rect.width / 2)) * 12
+    const rotateX = -(y / (rect.height / 2)) * 10
 
     setRotate({ x: rotateX, y: rotateY })
   }
 
   const handleMouseLeave = () => {
-    setIsHovered(false)
-    setRotate({ x: 6, y: -10 }) // Return smoothly to rest orientation
+    setRotate({ x: 3, y: 0 })
+  }
+
+  const prevSlide = () => {
+    setActiveSlide((prev) => (prev === 0 ? 2 : prev - 1))
+  }
+
+  const nextSlide = () => {
+    setActiveSlide((prev) => (prev === 2 ? 0 : prev + 1))
+  }
+
+  // Calculate 3D transforms based on active slide and mouse tilt
+  const getCardTransform = (index: number) => {
+    const diff = index - activeSlide
+    // When activeSlide is index, card is center-stage
+    if (diff === 0) {
+      return `translate3d(0px, 0px, 80px) rotateY(0deg) scale(1)`
+    }
+    // Left side card
+    if (diff === -1 || (activeSlide === 0 && index === 2)) {
+      return `translate3d(-240px, 20px, -60px) rotateY(22deg) scale(0.86)`
+    }
+    // Right side card
+    return `translate3d(240px, 20px, -60px) rotateY(-22deg) scale(0.86)`
+  }
+
+  const getCardOpacity = (index: number) => {
+    return index === activeSlide ? 1 : 0.65
+  }
+
+  const getCardZIndex = (index: number) => {
+    return index === activeSlide ? 30 : 10
   }
 
   return (
-    <div
-      ref={containerRef}
-      onMouseMove={(e) => {
-        setIsHovered(true)
-        handleMouseMove(e)
-      }}
-      onMouseLeave={handleMouseLeave}
-      className="relative w-full max-w-xl mx-auto h-[480px] sm:h-[520px] flex items-center justify-center perspective-1000 select-none cursor-pointer"
-    >
-      {/* Dynamic Ambient Glow Behind Composition */}
-      <div
-        className={`absolute inset-0 rounded-full blur-[100px] transition-opacity duration-700 pointer-events-none ${
-          isDark
-            ? 'bg-gradient-to-tr from-lime-500/20 via-indigo-500/15 to-emerald-500/20 opacity-80'
-            : 'bg-gradient-to-tr from-lime-400/20 via-indigo-300/15 to-emerald-400/15 opacity-60'
-        }`}
-      />
-
-      {/* Orbiting Particle Ring */}
-      <div
-        className="absolute w-[440px] h-[440px] rounded-full border border-dashed pointer-events-none transition-all duration-500 animate-pulse-ring"
-        style={{
-          borderColor: isDark ? 'rgba(163, 230, 53, 0.2)' : 'rgba(163, 230, 53, 0.35)',
-          transform: `rotateX(65deg) rotateZ(${rotate.y * 2}deg)`,
-        }}
-      />
-
-      {/* 3D Scene Root Canvas with Spring Interpolation */}
-      <div
-        className="relative w-full h-full flex items-center justify-center preserve-3d transition-transform duration-200 ease-out"
-        style={{
-          transform: `rotateX(${rotate.x}deg) rotateY(${rotate.y}deg) translateZ(0px)`,
-        }}
-      >
-        {/* ==================================================== */}
-        {/* Layer 1: Floating Ceramic / Glass Calendar Card      */}
-        {/* ==================================================== */}
+    <div className="relative w-full max-w-6xl mx-auto py-6 sm:py-10 select-none">
+      {/* Top Floating Badges & Almaris Wordmark Bar (Matching Top of Reference Image) */}
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 sm:mb-12 relative z-20 px-4">
+        {/* Left Luxury Pill Badge */}
         <div
-          className={`absolute w-[290px] sm:w-[320px] rounded-3xl p-5 transition-all duration-300 preserve-3d shadow-2xl ${
+          className={`px-5 py-2 rounded-full text-xs font-classic-serif font-medium tracking-[0.18em] transition-all duration-300 shadow-md ${
             isDark
-              ? 'bg-[#151d2a]/95 border border-slate-700/80 text-white shadow-black/70'
-              : 'bg-white/95 border border-slate-200/90 text-slate-900 shadow-slate-300/60'
+              ? 'bg-[#181411]/90 border border-[#c5a880]/35 text-[#dfc299] shadow-black/60'
+              : 'bg-white/95 border border-[#c5a880]/50 text-[#8c6d42] shadow-[#c5a880]/15'
           }`}
-          style={{
-            transform: 'translate3d(-40px, -20px, 20px) rotateZ(-2deg)',
-          }}
         >
-          {/* Calendar Header */}
-          <div className="flex items-center justify-between pb-3 border-b border-slate-200/40 dark:border-slate-800">
-            <span className="text-xs font-extrabold flex items-center gap-1.5 text-lime-600 dark:text-lime-400">
-              <CalendarIcon className="w-3.5 h-3.5" />
-              March 2025
-            </span>
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-lime-400/20 text-lime-700 dark:text-lime-300">
-              Live Sync
-            </span>
-          </div>
+          Luxury Platform Template
+        </div>
 
-          {/* Days Grid */}
-          <div className="grid grid-cols-7 gap-1 text-center text-[10px] font-bold text-slate-400 dark:text-slate-500 my-2">
-            <span>M</span>
-            <span>T</span>
-            <span>W</span>
-            <span>T</span>
-            <span>F</span>
-            <span>S</span>
-            <span>S</span>
-          </div>
-          <div className="grid grid-cols-7 gap-1 text-center text-xs font-semibold">
-            <span className="p-1 opacity-30">27</span>
-            <span className="p-1 opacity-30">28</span>
-            <span className="p-1">1</span>
-            <span className="p-1">2</span>
-            <span className="p-1">3</span>
-            <span className="p-1">4</span>
-            <span className="p-1">5</span>
-            <span className="p-1">6</span>
-            <span className="p-1">7</span>
-            <span className="p-1">8</span>
-            <span className="p-1">9</span>
-            <span className="p-1">10</span>
-            <span className="p-1">11</span>
-
-            {/* Selected Active Day (12) */}
-            <span className="p-1 rounded-xl bg-lime-400 text-slate-950 font-black shadow-md shadow-lime-500/30 ring-2 ring-lime-400/50">
-              12
-            </span>
-            <span className="p-1">13</span>
-            <span className="p-1">14</span>
-            <span className="p-1">15</span>
-            <span className="p-1">16</span>
-            <span className="p-1">17</span>
-            <span className="p-1">18</span>
-            <span className="p-1">19</span>
-            <span className="p-1">20</span>
-          </div>
-
-          {/* Available Times with Neumorphic Pills */}
-          <div className="mt-4 pt-3 border-t border-slate-200/40 dark:border-slate-800">
-            <p className="text-[11px] font-bold text-slate-500 dark:text-slate-400 mb-2">
-              Available Times
-            </p>
-            <div className="grid grid-cols-2 gap-1.5">
-              {['9:00 AM', '10:30 AM', '1:00 PM', '2:30 PM'].map((time) => {
-                const isSelected = activeSlot === time
-                return (
-                  <button
-                    key={time}
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      setActiveSlot(time)
-                    }}
-                    className={`py-1.5 px-2.5 rounded-xl text-xs font-bold transition-all ${
-                      isSelected
-                        ? 'bg-lime-400 text-slate-950 shadow-md shadow-lime-500/30'
-                        : isDark
-                        ? 'bg-[#0f1521] text-slate-300 hover:bg-slate-800'
-                        : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-                    }`}
-                  >
-                    {time}
-                  </button>
-                )
-              })}
-            </div>
+        {/* Center ALMARIS / BOOKLY Title with 5 Stars */}
+        <div className="flex flex-col items-center text-center">
+          <h2
+            className={`font-classic-serif text-3xl sm:text-4xl md:text-5xl font-normal tracking-[0.3em] uppercase transition-colors duration-300 ${
+              isDark ? 'text-[#f5f0eb]' : 'text-[#1c1917]'
+            }`}
+          >
+            B O O K L Y
+          </h2>
+          <div className="flex items-center gap-1.5 mt-1.5 text-[#d4af37] text-sm tracking-widest drop-shadow-[0_2px_10px_rgba(212,175,55,0.4)]">
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
           </div>
         </div>
 
-        {/* ==================================================== */}
-        {/* Layer 2: Floating Smartphone / Service Card (Higher Z) */}
-        {/* ==================================================== */}
+        {/* Right Luxury Pill Badge */}
         <div
-          className={`absolute w-[240px] sm:w-[260px] rounded-3xl p-4 transition-all duration-300 preserve-3d shadow-2xl ${
+          className={`px-5 py-2 rounded-full text-xs font-classic-serif font-medium tracking-[0.18em] transition-all duration-300 shadow-md ${
             isDark
-              ? 'bg-[#1b2434]/95 border border-slate-700 text-white shadow-black/80'
-              : 'bg-white/95 border border-slate-200 text-slate-900 shadow-slate-300/70'
+              ? 'bg-[#181411]/90 border border-[#c5a880]/35 text-[#dfc299] shadow-black/60'
+              : 'bg-white/95 border border-[#c5a880]/50 text-[#8c6d42] shadow-[#c5a880]/15'
           }`}
+        >
+          Included Booking Form
+        </div>
+      </div>
+
+      {/* Main 3D Panoramic Arena Viewport */}
+      <div
+        ref={containerRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        className="relative w-full h-[520px] sm:h-[580px] md:h-[620px] flex items-center justify-center perspective-1000 overflow-hidden"
+      >
+        {/* Soft Warm Ambient Lighting Flare */}
+        <div
+          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] rounded-full blur-[140px] pointer-events-none transition-opacity duration-700 ${
+            isDark
+              ? 'bg-gradient-to-tr from-[#c5a880]/15 via-[#dfc299]/10 to-[#9e825a]/15 opacity-80'
+              : 'bg-gradient-to-tr from-[#dfc299]/25 via-[#c5a880]/15 to-[#edd6b6]/20 opacity-70'
+          }`}
+        />
+
+        {/* 3D Scene Root Canvas */}
+        <div
+          className="relative w-full h-full flex items-center justify-center preserve-3d transition-transform duration-300 ease-out"
           style={{
-            transform: 'translate3d(90px, 40px, 60px) rotateZ(3deg)',
+            transform: `rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
           }}
         >
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-lime-600 dark:text-lime-400">
-              Selected Service
-            </span>
-            <span className="text-sm font-extrabold text-lime-500 dark:text-lime-400">
-              ${featuredService.price}
-            </span>
-          </div>
-
-          <div className="flex items-center gap-2.5 mb-2.5">
-            <div className="w-10 h-10 rounded-xl overflow-hidden shrink-0 border border-slate-200 dark:border-slate-700">
+          {/* ==================================================================== */}
+          {/* CARD 0: LEFT PERSPECTIVE - "DREAM APPOINTMENTS & RESERVATION BAR"     */}
+          {/* ==================================================================== */}
+          <div
+            onClick={() => setActiveSlide(0)}
+            className={`absolute w-[320px] sm:w-[380px] md:w-[440px] h-[460px] sm:h-[520px] rounded-3xl overflow-hidden preserve-3d transition-all duration-700 ease-out cursor-pointer shadow-2xl border ${
+              isDark
+                ? 'border-[#c5a880]/25 bg-[#120f0d] text-white shadow-black/80'
+                : 'border-[#c5a880]/40 bg-[#fdfbf7] text-stone-900 shadow-stone-400/40'
+            }`}
+            style={{
+              transform: getCardTransform(0),
+              opacity: getCardOpacity(0),
+              zIndex: getCardZIndex(0),
+            }}
+          >
+            {/* Background Image: Luxury Boutique Suite */}
+            <div className="absolute inset-0 z-0">
               <img
-                src={featuredStaff.avatar}
-                alt={featuredStaff.name}
-                className="w-full h-full object-cover"
+                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1000&q=80"
+                alt="Client Luxury Experience"
+                className="w-full h-full object-cover brightness-[0.75] contrast-[1.05]"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20" />
             </div>
-            <div className="truncate">
-              <h4 className="text-xs font-bold truncate">{featuredService.name}</h4>
-              <p className="text-[10px] text-slate-400 flex items-center gap-1">
-                <Clock className="w-3 h-3 text-lime-500" />
-                <span>{featuredService.durationMinutes} min • {featuredStaff.name}</span>
+
+            {/* Top Bar */}
+            <div className="relative z-10 p-5 flex items-center justify-between text-white/80 text-xs">
+              <span className="font-classic-serif tracking-widest uppercase">
+                B O O K L Y
+              </span>
+              <span className="text-[11px] opacity-75">Reserve Online</span>
+            </div>
+
+            {/* Main Content */}
+            <div className="relative z-10 px-6 sm:px-8 mt-16 sm:mt-24 space-y-2 text-white">
+              <h3 className="font-classic-serif text-3xl sm:text-4xl md:text-5xl font-normal leading-tight tracking-wide drop-shadow-md">
+                Dream Stays & <br />
+                Appointments
+              </h3>
+              <p className="text-xs sm:text-sm text-stone-200/80 font-light max-w-xs leading-relaxed">
+                The perfect service is just a click away. Book now and start your seamless journey.
               </p>
             </div>
-          </div>
 
-          <div className="pt-2 border-t border-slate-200/40 dark:border-slate-800">
-            <div className="w-full py-2 rounded-xl text-center text-xs font-black bg-lime-400 text-slate-950 shadow-md shadow-lime-500/25 flex items-center justify-center gap-1.5">
-              <span>Book Now</span>
-              <ArrowRight className="w-3 h-3 stroke-[2.5]" />
+            {/* Floating Glassmorphic Reservation Bar (Matching bottom left of reference image) */}
+            <div className="absolute bottom-5 inset-x-4 sm:inset-x-6 z-20">
+              <div className="luxury-glass rounded-2xl p-3 sm:p-4 text-white space-y-2.5 shadow-2xl border border-[#c5a880]/40">
+                <div className="grid grid-cols-3 gap-2 text-center text-xs">
+                  {/* Choose Date */}
+                  <div className="border-r border-white/10 pr-2">
+                    <span className="text-[9px] uppercase tracking-wider text-[#dfc299] block font-semibold">
+                      Choose Date
+                    </span>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        setSelectedDateRange(
+                          selectedDateRange === 'Mar 12 - Mar 15'
+                            ? 'Mar 18 - Mar 21'
+                            : 'Mar 12 - Mar 15'
+                        )
+                      }}
+                      className="font-bold text-[11px] sm:text-xs truncate block w-full mt-0.5 hover:text-[#dfc299]"
+                    >
+                      {selectedDateRange}
+                    </button>
+                  </div>
+
+                  {/* Specialist / Person Count with Minus/Plus */}
+                  <div className="border-r border-white/10 px-1">
+                    <span className="text-[9px] uppercase tracking-wider text-[#dfc299] block font-semibold">
+                      Guests / Staff
+                    </span>
+                    <div className="flex items-center justify-center gap-1.5 mt-0.5">
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          if (guestCount > 1) setGuestCount(guestCount - 1)
+                        }}
+                        className="w-4 h-4 rounded-full bg-white/20 hover:bg-[#c5a880] text-white flex items-center justify-center transition-colors"
+                      >
+                        <Minus className="w-2.5 h-2.5" />
+                      </button>
+                      <span className="font-extrabold text-xs">{guestCount}</span>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          setGuestCount(guestCount + 1)
+                        }}
+                        className="w-4 h-4 rounded-full bg-white/20 hover:bg-[#c5a880] text-white flex items-center justify-center transition-colors"
+                      >
+                        <Plus className="w-2.5 h-2.5" />
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Slot Time */}
+                  <div className="pl-2">
+                    <span className="text-[9px] uppercase tracking-wider text-[#dfc299] block font-semibold">
+                      Time Slot
+                    </span>
+                    <span className="font-bold text-[11px] sm:text-xs block mt-0.5 text-stone-200">
+                      {selectedTimeSlot}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Instant Book Mini Button */}
+                <Link
+                  to="/appointment-automation/demo"
+                  className="w-full py-2 rounded-xl text-center text-xs font-bold uppercase tracking-wider neu-gold-btn block shadow-md"
+                >
+                  Book Instant Demo
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* ==================================================== */}
-        {/* Layer 3: Glowing 3D Confirmed Booking Badge (Top Z)  */}
-        {/* ==================================================== */}
-        <div
-          onMouseEnter={() => setBadgeHover(true)}
-          onMouseLeave={() => setBadgeHover(false)}
-          className={`absolute w-20 h-24 rounded-2xl p-2.5 flex flex-col items-center justify-center transition-all duration-300 shadow-2xl preserve-3d ${
-            isDark
-              ? 'bg-[#182333] border-2 border-lime-400 text-white shadow-lime-500/25'
-              : 'bg-white border-2 border-lime-500 text-slate-900 shadow-lime-500/20'
-          }`}
-          style={{
-            transform: `translate3d(${badgeHover ? '135px' : '125px'}, ${
-              badgeHover ? '-115px' : '-105px'
-            }, 95px) rotateZ(${rotate.y * 0.8}deg)`,
-          }}
-        >
-          {/* Glowing Top Handle */}
-          <div className="w-6 h-3 rounded-t-full border-2 border-b-0 border-lime-400 -mt-4 mb-1" />
-          <div className="w-10 h-10 rounded-full bg-lime-400 text-slate-950 flex items-center justify-center font-black shadow-lg shadow-lime-500/40">
-            <Check className="w-6 h-6 stroke-[3.5]" />
+          {/* ==================================================================== */}
+          {/* CARD 1: CENTER ARCHED SHOWROOM - "EXPERIENCE HOSPITALITY / BOOKING"  */}
+          {/* ==================================================================== */}
+          <div
+            onClick={() => setActiveSlide(1)}
+            className={`absolute w-[340px] sm:w-[420px] md:w-[490px] h-[480px] sm:h-[540px] luxury-arch overflow-hidden preserve-3d transition-all duration-700 ease-out cursor-pointer shadow-2xl border ${
+              isDark
+                ? 'border-[#c5a880]/40 bg-[#161311] text-white shadow-black/90'
+                : 'border-[#c5a880]/50 bg-[#faf7f2] text-stone-900 shadow-stone-400/50'
+            }`}
+            style={{
+              transform: getCardTransform(1),
+              opacity: getCardOpacity(1),
+              zIndex: getCardZIndex(1),
+            }}
+          >
+            {/* Background Luxury Suite Interior with Warm Lampglow */}
+            <div className="absolute inset-0 z-0">
+              <img
+                src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=85"
+                alt="Luxury Master Chamber"
+                className="w-full h-full object-cover brightness-[0.7] contrast-[1.08]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
+            </div>
+
+            {/* Architectural Arched Border Highlight */}
+            <div className="absolute inset-0 luxury-arch pointer-events-none border border-[#c5a880]/30 z-10" />
+
+            {/* Top Navigation Row inside Card */}
+            <div className="relative z-20 pt-6 px-6 sm:px-8 flex items-center justify-between text-white/90 text-xs">
+              <span className="font-classic-serif font-bold text-sm tracking-[0.2em] uppercase">
+                ALMARIS
+              </span>
+              <div className="hidden sm:flex items-center gap-4 text-[11px] font-classic-serif tracking-wider uppercase text-stone-300">
+                <span>Rooms</span>
+                <span>Reservation</span>
+                <span>Services</span>
+              </div>
+              <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border border-[#c5a880]/40 bg-black/40 text-[#dfc299]">
+                5-Star
+              </span>
+            </div>
+
+            {/* Floating Glassmorphism Hero Showcase (Matching Center of Reference Image) */}
+            <div className="relative z-20 mt-16 sm:mt-20 mx-4 sm:mx-8">
+              <div className="luxury-glass rounded-3xl p-6 sm:p-8 text-center text-white space-y-3.5 shadow-2xl border border-[#c5a880]/35">
+                {/* 5 Stars */}
+                <div className="flex items-center justify-center gap-1 text-[#d4af37] text-xs">
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+                </div>
+
+                {/* Editorial Headline */}
+                <h3 className="font-classic-serif text-2xl sm:text-3xl md:text-4xl font-normal leading-tight tracking-wide text-[#fdfbf7]">
+                  Experience Hospitality Like Never Before
+                </h3>
+
+                {/* Subtitle */}
+                <p className="text-xs sm:text-sm text-stone-300/90 font-light max-w-sm mx-auto leading-relaxed">
+                  Discover the perfect blend of luxury, comfort, and operational convenience at Bookly. Tailored for esteemed client journeys, built by Dawnexus.
+                </p>
+
+                {/* Discover Services Button */}
+                <div className="pt-2 flex justify-center">
+                  <Link
+                    to="/appointment-automation/demo"
+                    className="px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-[0.18em] neu-gold-btn shadow-lg flex items-center gap-2 transform hover:scale-105 transition-all"
+                  >
+                    <span>Discover Services</span>
+                    <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Carousel Controls (Matching "< 2 / 2 >" in Reference Image) */}
+            <div className="absolute bottom-5 inset-x-6 z-20 flex items-center justify-between text-white/90 text-xs">
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  prevSlide()
+                }}
+                className="w-8 h-8 rounded-full bg-black/40 hover:bg-[#c5a880] text-white border border-[#c5a880]/30 flex items-center justify-center transition-all shadow-md"
+                aria-label="Previous slide"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+
+              <span className="font-classic-serif tracking-widest text-xs font-bold text-[#dfc299]">
+                {activeSlide + 1} / 3
+              </span>
+
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  nextSlide()
+                }}
+                className="w-8 h-8 rounded-full bg-black/40 hover:bg-[#c5a880] text-white border border-[#c5a880]/30 flex items-center justify-center transition-all shadow-md"
+                aria-label="Next slide"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
           </div>
-          <span className="text-[8px] font-extrabold tracking-wider uppercase text-lime-600 dark:text-lime-400 mt-1">
-            Confirmed
-          </span>
-        </div>
 
-        {/* ==================================================== */}
-        {/* Layer 4: Floating 3D Notification Bell Tile (Left Z) */}
-        {/* ==================================================== */}
-        <div
-          className={`absolute w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 shadow-xl preserve-3d animate-float-slow ${
-            isDark
-              ? 'bg-[#101724] border border-slate-700/80 text-lime-400'
-              : 'bg-white border border-slate-200 text-lime-600 shadow-slate-200'
-          }`}
-          style={{
-            transform: `translate3d(-150px, 80px, 45px) rotateZ(${rotate.x * 0.6}deg)`,
-          }}
-        >
-          <Bell className="w-6 h-6 stroke-[2.2]" />
-          <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-lime-400 ring-2 ring-slate-950 animate-ping" />
-        </div>
+          {/* ==================================================================== */}
+          {/* CARD 2: RIGHT PERSPECTIVE - "WELCOME ARCH & BUSINESS DASHBOARD"       */}
+          {/* ==================================================================== */}
+          <div
+            onClick={() => setActiveSlide(2)}
+            className={`absolute w-[320px] sm:w-[380px] md:w-[440px] h-[460px] sm:h-[520px] rounded-3xl overflow-hidden preserve-3d transition-all duration-700 ease-out cursor-pointer shadow-2xl border ${
+              isDark
+                ? 'border-[#c5a880]/25 bg-[#120f0d] text-white shadow-black/80'
+                : 'border-[#c5a880]/40 bg-[#fdfbf7] text-stone-900 shadow-stone-400/40'
+            }`}
+            style={{
+              transform: getCardTransform(2),
+              opacity: getCardOpacity(2),
+              zIndex: getCardZIndex(2),
+            }}
+          >
+            {/* Background Image: Grand Architectural Palace Lobby with Arches */}
+            <div className="absolute inset-0 z-0">
+              <img
+                src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1000&q=80"
+                alt="Grand Hall Reception"
+                className="w-full h-full object-cover brightness-[0.7] contrast-[1.05]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/20" />
+            </div>
 
-        {/* ==================================================== */}
-        {/* Layer 5: Floating 3D Staff Profile Badge (Top Left Z)*/}
-        {/* ==================================================== */}
-        <div
-          className={`absolute w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 shadow-lg preserve-3d animate-float-reverse ${
-            isDark
-              ? 'bg-[#121a28] border border-indigo-500/40 text-indigo-400'
-              : 'bg-white border border-indigo-200 text-indigo-600 shadow-slate-200'
-          }`}
-          style={{
-            transform: `translate3d(-140px, -110px, 55px) rotateZ(${-rotate.y * 0.5}deg)`,
-          }}
-        >
-          <User className="w-6 h-6 stroke-[2]" />
+            {/* Top Bar */}
+            <div className="relative z-10 p-5 flex items-center justify-between text-white/80 text-xs">
+              <span className="font-classic-serif tracking-widest uppercase">
+                B O O K L Y
+              </span>
+              <span className="text-[11px] opacity-75">Intelligence Portal</span>
+            </div>
+
+            {/* Main Content */}
+            <div className="relative z-10 px-6 sm:px-8 mt-14 sm:mt-20 space-y-3 text-white">
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#dfc299] block">
+                WELCOME TO ALMARIS
+              </span>
+              <h3 className="font-classic-serif text-3xl sm:text-4xl md:text-5xl font-normal leading-tight tracking-wide drop-shadow-md">
+                Unrivaled Prestige & Management
+              </h3>
+              <p className="text-xs sm:text-sm text-stone-200/80 font-light max-w-xs leading-relaxed">
+                Step into the epitome of appointment automation. Offering an exquisite operational overview for discerning businesses.
+              </p>
+            </div>
+
+            {/* Lower Callout Box */}
+            <div className="absolute bottom-5 inset-x-4 sm:inset-x-6 z-20">
+              <div className="luxury-glass rounded-2xl p-4 text-white space-y-3 shadow-2xl border border-[#c5a880]/40">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-stone-300 font-medium">Enterprise Analytics</span>
+                  <span className="font-bold text-[#dfc299]">$18,450 / mo</span>
+                </div>
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-stone-300 font-medium">Staff Attendance</span>
+                  <span className="font-bold text-emerald-400">98% Synced</span>
+                </div>
+                <Link
+                  to="/appointment-automation/dashboard"
+                  className="w-full py-2 rounded-xl text-center text-xs font-bold uppercase tracking-wider bg-white/10 hover:bg-white/20 text-white border border-[#c5a880]/40 block transition-all shadow-md"
+                >
+                  Explore Dashboard &rarr;
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   )
 }
-

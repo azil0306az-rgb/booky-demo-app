@@ -47,13 +47,13 @@ export const PaymentsView: React.FC = () => {
       {/* 3 Metric Cards */}
       <div className="grid sm:grid-cols-3 gap-4">
         <div
-          className={`p-5 rounded-3xl space-y-2 transition-all ${
-            isDark ? 'neu-raised' : 'neu-raised'
+          className={`p-5 rounded-3xl space-y-2 transition-all border ${
+            isDark ? 'neu-raised border-[#c5a880]/20' : 'neu-raised border-[#c5a880]/30'
           }`}
         >
           <span className="text-xs font-semibold opacity-60">Total Collected</span>
           <div className="flex items-baseline justify-between">
-            <span className="text-3xl font-extrabold text-lime-600 dark:text-lime-400">
+            <span className="text-3xl font-classic-serif font-normal text-[#dfc299]">
               ${totalCollected}.00
             </span>
             <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded">
@@ -134,11 +134,11 @@ export const PaymentsView: React.FC = () => {
                   }`}
                 >
                   <td className="py-3.5 px-4 font-mono font-bold">{pay.invoiceNumber}</td>
-                  <td className="py-3.5 px-4 font-mono text-lime-600 dark:text-lime-400">
+                  <td className="py-3.5 px-4 font-mono text-[#dfc299]">
                     {pay.appointmentReference}
                   </td>
                   <td className="py-3.5 px-4 font-bold">{pay.customerName}</td>
-                  <td className="py-3.5 px-4 font-extrabold">${pay.amount}.00</td>
+                  <td className="py-3.5 px-4 font-classic-serif font-normal text-base text-[#dfc299]">${pay.amount}.00</td>
                   <td className="py-3.5 px-4 uppercase font-bold text-[10px] opacity-60">
                     {pay.type}
                   </td>
@@ -150,7 +150,7 @@ export const PaymentsView: React.FC = () => {
                           ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-400/30'
                           : pay.status === 'failed'
                           ? 'bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-300 border border-rose-400/30'
-                          : 'bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-200'
+                          : 'bg-stone-100 text-stone-800 dark:bg-stone-800 dark:text-stone-200'
                       }`}
                     >
                       {pay.status}
@@ -160,7 +160,7 @@ export const PaymentsView: React.FC = () => {
                     {pay.status === 'successful' ? (
                       <button
                         onClick={() => simulatePaymentAction(pay.id, 'failed')}
-                        className="px-2.5 py-1 rounded-lg border border-rose-500/40 text-rose-500 hover:bg-rose-500/10 text-[10px] font-bold transition-all"
+                        className="px-2.5 py-1 rounded-full border border-rose-500/40 text-rose-500 hover:bg-rose-500/10 text-[10px] font-bold transition-all"
                         title="Simulate card decline to test automated retry"
                       >
                         Simulate Failure
@@ -168,7 +168,7 @@ export const PaymentsView: React.FC = () => {
                     ) : (
                       <button
                         onClick={() => simulatePaymentAction(pay.id, 'successful')}
-                        className="px-2.5 py-1 rounded-lg bg-lime-400 hover:bg-lime-300 text-slate-950 text-[10px] font-bold shadow-sm transition-all"
+                        className="px-2.5 py-1 rounded-full neu-gold-btn text-[10px] font-bold shadow-sm transition-all"
                         title="Retry simulated payment"
                       >
                         Simulate Retry Success
@@ -224,7 +224,7 @@ export const PaymentsView: React.FC = () => {
               </div>
               <div className="flex justify-between">
                 <span className="opacity-60">Booking Reference:</span>
-                <strong className="font-mono text-lime-600 dark:text-lime-400">
+                <strong className="font-mono text-[#dfc299]">
                   {selectedInvoice.appointmentReference}
                 </strong>
               </div>
@@ -236,18 +236,18 @@ export const PaymentsView: React.FC = () => {
                 <span className="opacity-60">Payment Channel:</span>
                 <strong>{selectedInvoice.method}</strong>
               </div>
-              <div className="flex justify-between pt-2 border-t border-slate-200/40 dark:border-slate-800 text-sm">
+              <div className="flex justify-between pt-2 border-t border-stone-200/40 dark:border-stone-800 text-sm">
                 <span className="font-bold">Total Settled:</span>
-                <span className="font-black text-lime-600 dark:text-lime-400">${selectedInvoice.amount}.00</span>
+                <span className="font-classic-serif font-normal text-lg text-[#dfc299]">${selectedInvoice.amount}.00</span>
               </div>
             </div>
 
             <div className="pt-2 text-center">
               <button
                 onClick={() => setSelectedInvoice(null)}
-                className="w-full py-2.5 rounded-xl bg-lime-400 text-slate-950 font-bold text-xs shadow-md shadow-lime-500/20"
+                className="w-full py-2.5 rounded-full neu-gold-btn text-xs font-bold uppercase tracking-wider shadow-md"
               >
-                Close Receipt
+                Close Folio Receipt
               </button>
             </div>
           </div>
